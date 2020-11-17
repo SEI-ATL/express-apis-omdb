@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 });
 
 // The app.listen function returns a server handle
-var server = app.listen(process.env.PORT || 3000);
-
+var server = app.listen(process.env.PORT || 8001);
+console.log(typeof process.ENV.TEST)
 // We can export this server to other servers like this
 module.exports = server;
