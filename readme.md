@@ -51,7 +51,7 @@ to a route like `/movies/tt234323` (where `tt234323` is the IMDBid for that movi
 
 * Make sure you call `res.render` inside the callback function of the API call.
 
-## Bonuses (if you get done before break)
+## Bonuses
 
 * Add stars images to reflect the imdb ratings
 * Figure out what parameters are need to access the Rotten Tomato information, and display that information to the page
