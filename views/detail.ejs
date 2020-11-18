@@ -1,2 +1,9 @@
-<% // Render individual movie details here %>
-<% // This is how to do comments in EJS, by the way... %>
+<h1><%= title %></h1>
+<img src="<%= details.Poster %>">
+<ul>
+    <% for (const [key, value] of Object.entries(details)){ %>
+        <% if (key !== 'Poster' && key !== 'Response') { %> 
+            <li><%= key %>: <%= value %></li>
+        <% } %> 
+    <% } %>
+</ul>
