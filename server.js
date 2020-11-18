@@ -23,21 +23,29 @@ app.get('/', function(req, res) {
 });
 
 app.get('/results', (req, res) => {
-  
-  
   axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${req.query.title}`).then(function (response) {
-    
     const movies = response.data.Search
-    
+    // console.log(movies);
     res.render('results', { movies });
-    
-    
-
   }).catch(error => console.log(error))
 })
 
+app.get('/movies/:movie_id', (req, res) => {
+  const imdb = req.params.movie_id
+  axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${imdb}`).then(function (response) {
+    const title = `Movie Details: ${imdb} `
+    
+    res.render('detail', { title, details: response.data });
+  }).catch(error => console.log(error))
+})
+  
+    
+    
+
+    
+
 // The app.listen function returns a server handle
-var server = app.listen(process.env.PORT || 3000);
+var server = app.listen(process.env.PORT || 3000, console.log('in the matrix'));
 
 // We can export this server to other servers like this
 module.exports = server;
