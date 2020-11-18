@@ -28,7 +28,7 @@ app.get('/', function(req, res) {
 
 
 app.get('/results', (req, res) => {
-  console.log(req.query);
+  
 
   // for (const key in req.query) {
   //   console.log(key, req.query[key])
@@ -37,7 +37,7 @@ app.get('/results', (req, res) => {
   axios.get(`http://www.omdbapi.com/?apikey=${process.env.api}&s=${req.query.q}`)
   .then(function (response) {
     const movies = response.data.Search
-    console.log(movies);
+    
     
     res.render('results', { movies })
   })
@@ -45,11 +45,11 @@ app.get('/results', (req, res) => {
 
 app.get('/movies/:movie_id', (req,res) => {
   const movie_id = req.params.movie_id
-  console.log(movie_id)
+ 
 
   axios.get(`http://www.omdbapi.com/?apikey=${process.env.api}&i=${movie_id}`)
   .then(function (response) {
-    console.log(response.data)
+    
     const movie = response.data
 
     res.render('detail', { movie })
