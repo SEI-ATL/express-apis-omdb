@@ -17,6 +17,7 @@ movieRouter.get('/:titleSearch', function(req, res){
     // .then(response => response.json())
     .then(response => console.log(JSON.stringify(response.data)))
     // .then(res.render('/results'))
+    // res.redirect('results')
     
     
     

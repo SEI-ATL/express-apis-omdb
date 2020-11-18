@@ -25,6 +25,6 @@ app.get('/', function(req, res){
 
 app.use('/movies', movieRouter)
 
-app.listen(8000, () => {
+app.listen(8001, () => {
     console.log('server started!')
 })
