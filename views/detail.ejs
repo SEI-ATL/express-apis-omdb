@@ -1,2 +1,11 @@
 <% // Render individual movie details here %>
 <% // This is how to do comments in EJS, by the way... %>
+<img src="<%=data.Poster%>" alt="No picture availible">
+<h1><%= data.Title %> </h1>
+<ul>
+    <li>Directed by: <%= data.Director %> </li>
+    <li>Released: <%= data.Released %> </li>
+    <li>Cast: <%= data.Actors %> </li>
+    <li>Plot: <%= data.Plot %> </li>
+    <li>Awards: <%= data.Awards %> </li>
+</ul>
