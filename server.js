@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
+const axios = require('axios')
 const app = express();
 
 // Sets EJS as the view engine
@@ -17,8 +18,16 @@ app.use(require('morgan')('dev'));
 
 // Routes
 app.get('/', function(req, res) {
-  res.send('Hello, backend!');
+  res.render('index');
 });
+
+app.get('/results', function(req, res) {
+  res.render('results')
+})
+
+app.get('/movies/:movie_id', function(req, res) {
+  res.render('details')
+})
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
