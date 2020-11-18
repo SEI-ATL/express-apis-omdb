@@ -7,19 +7,32 @@ movieRouter.get("/", (req, res) => {
 
 // SEARCH MOVIES BY TITLE
 movieRouter.get("/results", (req, res) => {
-  const searchTerm = req.query.q;
+  const query = req.query.q;
   axios
     .get(
-      `http://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.API_KEY}`)
+      `http://www.omdbapi.com/?s=${query}&apikey=${process.env.API_KEY}`)
     .then((response) => {
       const results = response.data.Search
-      res.render("movies/results", { searchTerm: response.data.Search })
+      res.render("movies/results", { query: response.data.Search })
     })
     .catch((error) => {
       console.log(error);
     })
 });
 
+movieRouter.get("/movies/:movie_id", (req, res) => {
+  const movieId = req.params.movie_id;
+  axios.get(`http://www.omdbapi.com/?i=${movieId}&apikey=${process.env.API_KEY}`)
+  .then((response) => {
+    const title = `Movie Details: ${movieId}`
+    const movieDetails = response.data
+    res.render('movies/detail', { movieDetails } )
+  })
+  .catch((error) => {
+    res.send("You've gotten an error.")
+    console.log(error)
+  })
+})
 module.exports = movieRouter;
 
 // When user clicks "SUBMIT", grab user text from Search box

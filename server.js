@@ -18,7 +18,7 @@ app.use(require('morgan')('dev'));
 app.use('/movies', movieRouter);
 // Routes
 app.get('/', function(req, res) {
-  res.send('Hello, backend!');
+  res.redirect('/movies')
 });
 
 // The app.listen function returns a server handle

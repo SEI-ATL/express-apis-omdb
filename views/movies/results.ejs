@@ -3,7 +3,8 @@
 
 <h3>These are your results!</h3>
 <ul>
-<% searchTerm.forEach((movie) => { %>
-    <li><%= movie.Title %></li>
+<% query.forEach((movie) => { %>
+    <a href="movies/<%= movie.imdbID %>"><li><%= movie.Title %> : <%= movie.Year %></li></a>
+   
 <% }) %>
 </ul>
