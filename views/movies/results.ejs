@@ -1,0 +1,10 @@
+<% // Render your search results here %>
+<% // This is how to do comments in EJS, by the way... %>
+<ul>
+    <% movies.forEach((movies) => { %> 
+        <li><%= movies.Title %> 
+            <form method="GET" action="/"><a href="/movies/detail/<%=movies.imdbID%>">Find out more!</a>
+            </form>
+        </li>
+    <% }) %> 
+</ul>
