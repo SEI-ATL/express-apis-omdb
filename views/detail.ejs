@@ -1,6 +1,12 @@
 <h2><%= movieDetails.Title %></h2>
 <img src="<%= movieDetails.Poster %>" alt="<%= movieDetails.Title %>">
 
+<form action="/faves" method="POST">
+  <input type="text" name="title" value="<%= movieDetails.Title %>" style="display: none">
+  <input type="text" name="imdbid" value="<%= movieDetails.imdbID %>" style="display: none">
+  <input type="submit" value="Add to Faves">
+</form>
+
 <% for (let [key, value] of Object.entries(movieDetails)) { %>
 <% console.log(String(key)); %>
 <% if (key !== 'Title' && key !== 'Poster' && key !== 'Ratings') { %>

@@ -1,7 +1,7 @@
 require('dotenv').config();
 let movieRouter = require('express').Router();
 let axios = require('axios');
-
+let db = require('../models');
 
 movieRouter.get('/', (req, res) => {
   res.render('index');
@@ -26,6 +26,16 @@ movieRouter.get('/movies/:movie_id', async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+});
+
+movieRouter.post('/faves', (req, res) => {
+  console.log(req.body.title);
+  db.fave.create({
+    title: req.body.title,
+    imdbid: req.body.imdbid
+  }).then(createdFave => {
+    console.log(createdFave);
+  });
 });
 
 module.exports = movieRouter;
