@@ -22,9 +22,16 @@ app.get('/', (req, res) => {
 })
 
 app.get('/results', (req, res) => {
-    // const movie = req.body
-    const queryResults = req.query
-    res.render('results', { queryResults })
+    const query = req.query.q
+    axios
+        .get(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=${query}`)
+        .then((response) => {
+            const title = `${response.data.Search.length} Matches for '${query}'`
+            res.render('results', { title, results: response.data.Search })
+        })
+        .catch((error) => {
+            res.send('Search could not be completed')
+        })
 })
 
 // The app.listen function returns a server handle
