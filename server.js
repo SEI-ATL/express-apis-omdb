@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
+const movieRouter = require('./controller/movieController');
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');

@@ -3,20 +3,18 @@ const { response } = require('express')
 
 const movieRouter = require('express').Router()
 
-// const apiKey = 
+const apiKey = process.env.API_KEY;
 
 movieRouter.get('/', (req, res) => {
-    res.render('movies/index')
+    res.render('index')
 })
 
-movieRouter.get('/:titleSearch', (req, res) => {
-    const searchTerm = req.params.titleSearch;
-    Axios.get(`http://www.omdbapi.com/?s=${searchTerm}apikey=d120ba49`)
-    .then((response) => {
-        res.render('movies/results', { movies: response.data.Search})
-    })
-    .catch((error) => {
-        console.log(error);
+movieRouter.get('/results', (req, res) => {
+    let searchTerm = req.query.titleSeach;
+    Axios.get(`http://www.omdbapi.com/?t=${searchTerm}&apikey=${apiKey}`)
+    .then((data) => {
+        let results = data.Search;
+        res.render('results', { results: titleSearch})
     })
 })
 
