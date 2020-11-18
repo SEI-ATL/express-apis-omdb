@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
+const movieRouter = require('./controller/movieController');
 const app = express();
+const axios = require('axios')
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -14,7 +16,7 @@ app.use(ejsLayouts);
 
 // Adds some logging to each request
 app.use(require('morgan')('dev'));
-
+app.use('/', movieRouter)
 // Routes
 app.get('/', function(req, res) {
   res.send('Hello, backend!');
