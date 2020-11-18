@@ -40,7 +40,7 @@ app.get('/results', (req, res) => {
       });
     })
     .catch((error) => {
-      res.redirect('index');
+      res.redirect('/');
       console.log(error);
     });
 });
@@ -73,7 +73,7 @@ app.get('/movies/:movie_id', (req, res) => {
       });
     })
     .catch((error) => {
-      res.redirect('index');
+      res.redirect('/');
       console.log(error);
     });
 });
