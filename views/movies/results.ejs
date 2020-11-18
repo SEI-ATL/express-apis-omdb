@@ -3,8 +3,7 @@
 
 <h3>These are your results!</h3>
 <ul>
-<% movies.forEach((movie) => { %>
-    <li><%= movie %>
-    </li>
+<% searchTerm.forEach((movie) => { %>
+    <li><%= movie.Title %></li>
 <% }) %>
 </ul>

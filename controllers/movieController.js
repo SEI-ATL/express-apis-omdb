@@ -6,15 +6,14 @@ movieRouter.get("/", (req, res) => {
 });
 
 // SEARCH MOVIES BY TITLE
-movieRouter.get("/:title", (req, res) => {
-  const searchTerm = req.params.title;
+movieRouter.get("/results", (req, res) => {
+  const searchTerm = req.query.q;
   axios
     .get(
-      `http://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.API_KEY}`,
-      console.log(`http://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.API_KEY}`)
-    )
+      `http://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.API_KEY}`)
     .then((response) => {
-      res.render("movies/results", { movies: response.data.Search })
+      const results = response.data.Search
+      res.render("movies/results", { searchTerm: response.data.Search })
     })
     .catch((error) => {
       console.log(error);
