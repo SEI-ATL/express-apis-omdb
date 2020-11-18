@@ -1,11 +1,9 @@
-<h1>OMDB Movie Search</h1>
-<p>Search for a movie below...</p>
-
-<form>
-    <form>
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname">
-      </form>
-</form>
+<div class='title'><h1>OMDB Movie Search</h1></div>
+<div class='title2'><h2>Search for a movie:</h2></div>
+<div class="search">
+  <form method="GET" action="/results">
+    <label for="query"></label>
+    <input id="query" type="text" name="q" placeholder="Search For A Movie" />
+    <input id="submit" type="submit" />
+  </form>
+</div>
