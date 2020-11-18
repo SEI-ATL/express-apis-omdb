@@ -6,4 +6,5 @@ RESULTS
 <% obj.forEach((el) => { %>
     <h3><%=el.Title %></h3>
     <img src="<%= el.Poster %>" width="50" height="auto">
+    <a href="movies/<%= el.imdbID %>">Details</a>
     <% }) %>

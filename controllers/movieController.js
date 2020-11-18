@@ -23,9 +23,8 @@ movieRouter.get('/', (req, res) => {
   })
 
  movieRouter.get('/results', async function(req, res){
-   
+  
     const query = plusWord(req.query.q)
-    console.log(query);
     await axios.get('http://www.omdbapi.com/?s='+query+'&'+api)
     .then(reso => {
        
@@ -40,6 +39,22 @@ movieRouter.get('/', (req, res) => {
    
   })
 
+  movieRouter.get('/:movie_id', async function(req, res){
+    const movieId =req.params.movie_id;
+    // const query = plusWord(req.query.q)
+    await axios.get('http://www.omdbapi.com/?i='+movieID+'&'+api)
+    .then(reso => {
+       
+        let obj = reso.data
+        console.log(obj)
+        res.render('details', {obj});
+    })
+    .catch(err => {
+        console.log(err);
+    });
+    
+   
+  })
 
 
 let rawTest= "TEST"
