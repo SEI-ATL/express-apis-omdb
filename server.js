@@ -3,6 +3,8 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 
+const movieRouter = require('./controllers/movieController')
+
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
 // Specifies the location of the static assets folder
@@ -16,9 +18,11 @@ app.use(ejsLayouts);
 app.use(require('morgan')('dev'));
 
 // Routes
-app.get('/', function(req, res) {
-  res.send('Hello, backend!');
-});
+// app.get('/', function(req, res) {
+//     res.send('Hello, backend!');
+// });
+
+app.use('/', movieRouter)
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
