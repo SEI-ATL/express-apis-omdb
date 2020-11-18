@@ -10,13 +10,12 @@ movieRouter.get('/', function(req, res){
 
 })
 movieRouter.get('/results', function(req, res){
-    // res.render('index')
     const title = req.query.titleSearch
     console.log(title)
     axios.get(`http://www.omdbapi.com/?apikey=${api_key}&s=${title}`)
-    // .then(response => response.json())
     .then((response) => {console.log((response.data.Search))
-    res.render('results')
+        const results = response.data.Search
+    res.render('results', { results })
     })
     // .then(res.render('/results'))
     

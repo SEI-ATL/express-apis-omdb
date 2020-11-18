@@ -9,10 +9,6 @@ api_key = process.env.api_key
 
 // console.log(process.env); 
 
-// fetch(`http://www.omdbapi.com/?apikey=${api_key}&s=${search}`)
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-
 app.set('view engine', 'ejs')
 app.use(layouts)
 app.use(express.urlencoded({extended: false}))

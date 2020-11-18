@@ -1,2 +1,12 @@
-<h1>Your results are</h1>
+<h1>Movies from searching</h1>
+<ul> 
+    <% results.forEach((movie) => { %>
+        <div class="titles"><%= movie.Title %></div>
+        <li><%=movie.Year%></li>
+        <div class="poster">
+            <img src="<%= movie.Poster %>"
+        </div>
 
+
+    <% }) %>
+</ul>
