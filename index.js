@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const layouts = require('express-ejs-layouts');
+const axios = require('axios').default;
+require('dotenv').config();
 
 app.set('view engine', 'ejs');
 app.use(layouts);
@@ -12,11 +14,26 @@ app.get('/', (req, res) => {
 })
 
 app.get('/results?:movieName', function (req, res) {
-    const movieName = req.params.movieName
+    const movieName = req.query.movieName;
+  
+    axios.get(`http://www.omdbapi.com/?s=${movieName}&apikey=${process.env.api}`)
+    .then((response) => {
+        const movieResults = response.data.Search
+        res.render('results', { movieResults })   
+    })
+})
 
-    res.render('results', { movieName: movieName })
+app.get('/movies/:movie_id', (req, res) => {
+    movieId = req.params.movie_id;
+    axios.get(`http://www.omdbapi.com/?i=${movieId}&apikey=${process.env.api}`)
+    .then((response) => {
+    const idResults = response.data
+    console.log(idResults);
+    res.render('detail', { idResults })   
+})
 })
 
 app.listen(8000, () => {
     console.log('server started')
 })
+

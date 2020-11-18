@@ -1,2 +1,13 @@
 <% // Render individual movie details here %>
 <% // This is how to do comments in EJS, by the way... %>
+
+<ul>
+    <% Object.entries(idResults).forEach(entry => {%> 
+    <%    const [key, value] = entry; %> 
+    <li>
+        <%= key,%>:
+        <%= value %> 
+    </li>
+    <% }); %> 
+</ul>
+
