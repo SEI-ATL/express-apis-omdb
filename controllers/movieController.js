@@ -4,20 +4,19 @@ const fs = require('fs')
 const movieRouter = require('express').Router()
 
 movieRouter.get('/', (req, res)=>{
-    res.render('movies/index')
+    res.render('index')
 })
 
 movieRouter.get('/results', (req, res)=>{
-    const mySearch = req.body.title;
-    Axios.get( `http://www.omdbapi.com/?i=${mySeatch}&apikey=${process.env.API_KEY}`)
-    .then ((response) => {
-        res.render('results'), 
-        {movies: response.data.Search}
+    const mySearch = req.query.title;
+    console.log(mySearch)
+    Axios.get( `http://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=${mySearch}`)
+    .then ((response) => { res.render('results'), {movies: response.data.Search}
     })
     .catch((error)=> {
-        res.send(error);
-    })
+        console.log(error);
+    });
 });
 
 
-module.export = movieRouter
+module.exports = movieRouter;

@@ -4,7 +4,7 @@ const axios = require('axios');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 
-const movieController = require('./controller/movieController');
+const movieController = require('./controllers/movieController');
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.use('/', movieController)
+app.use('/movies', movieController)
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
