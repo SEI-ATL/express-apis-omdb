@@ -1,7 +1,7 @@
 <h1>Movies from searching</h1>
 <ul> 
     <% results.forEach((movie) => { %>
-        <div class="titles"><%= movie.Title %></div>
+        <li><a href="details/<%= movie.imdbID %>"> <%= movie.Title %> </a></li>
         <li><%=movie.Year%></li>
         <div class="poster">
             <img src="<%= movie.Poster %>"
