@@ -9,13 +9,16 @@ movieRouter.get('/', (req, res) => {
 
 movieRouter.get('/results', (req, res) => {
     let searchQuery = req.query.title;
-    axios.get(`http://www.omdbapi.com/?t=${searchQuery}&apikey=${API_KEY}`, (res) => {
+    axios.get(`http://www.omdbapi.com/?s=${searchQuery}&apikey=${API_KEY}`, (res) => {
         let movieData = res.json.data;
     }).then((movieData) => {
-        console.log(movieData.data.Title);
-        res.render('results', {data: movieData.data})
+        console.log(movieData.data.Search);
+        res.render('results', {data: movieData.data.Search})
     });
+});
 
+movieRouter.get('/movies/:movie_id', (req, res) => {
+    res.render('detail');
 });
 
 
