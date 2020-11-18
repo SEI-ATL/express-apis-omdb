@@ -1,2 +1,9 @@
 <% // Render your search results here %>
 <% // This is how to do comments in EJS, by the way... %>
+<h1>OMDB Movie Search</h1>
+<p>results:</p>
+
+<% movies.forEach(movie => { %>
+    <h2> <%= movie.Title %> </h2>
+    <p> <%= movie.Year %> </p>
+<% }) %> 
