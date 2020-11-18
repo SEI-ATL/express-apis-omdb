@@ -1,14 +1,23 @@
 <% // Render your search results here %>
     <% // This is how to do comments in EJS, by the way... %>
 
-        <h1>Search results for:
-            <%= title %>
+        <h1 class='siteTitle'>RESULTS FOR:
+            <%= title.toUpperCase() %>
                 </br>
         </h1>
-        <% results.forEach((result) => { %>
-            <h2>
-                <%= result.Title %>
-            </h2>
-            <img src="<%= result.Poster %> " alt="<%= result.Title %> " href="/movies/<%= result.imdbID %> ">
-            <a href="/movies/<%= result.imdbID %> ">View More</a>
-            <% }) %>
+        <div class="movieGrid">
+            <% results.forEach((result) => { %>
+                <div class="movieDetail">
+                    <h4 class='title'>
+                        <%= result.Title.toUpperCase() %>
+                    </h4>
+                    <% if (result.Poster !== 'N/A') { %>
+                        <a class='img' href="/movies/<%= result.imdbID %> "><img src="<%= result.Poster %> " alt="<%= result.Title %> "></a>
+                        <% } else { %>
+                            <a class='img' href="/movies/<%= result.imdbID %> ">Poster not found</a>
+                            <% } %>
+                                <a href="/movies/<%= result.imdbID %> ">View More</a>
+
+                </div>
+                <% }) %>
+        </div>

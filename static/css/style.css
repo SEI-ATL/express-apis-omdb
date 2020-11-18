@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+body {
+    text-align: center;
+    background-color: rgb(10, 6, 1);
+    margin: 0;
+    color: goldenrod;
+}
+
+nav {
+    position: absolute;
+    display: flex;
+    width: 5vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: goldenrod;
+    padding: 5px;
+    background-color: floralwhite;
+    border-radius: 6px;
+    width: fit-content;
+    margin: 0.5rem;
+}
+
+.movieGrid {
+    display: grid;
+    width: 75vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 0 auto;
+}
+
+.movieDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: floralwhite;
+    border-radius: 12px;
+    border: 5px dotted rgb(236, 182, 44);
+}
+
+.movieDetail img {
+    border-radius: 6px;
+    height: 35vh;
+}
+
+.movieDetail a.img {
+    height: 35vh;
+}
+
+.movieDetail h4 {
+    width: 15vw;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    background-color: floralwhite;
+    min-height: 12vh;
+    min-width: 25vw;
+    max-width: 500px;
+    border-radius: 6px;
+    margin: 0 auto;
+}
+
+input:focus {
+    outline: none;
+}
+
+.siteTitle {
+    font-family: 'Limelight', cursive;
+    margin-top: 2rem;
+}
+
+input {
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+label {
+    color: black;
+}
+
+#submit {
+    background-color: goldenrod;
+}
+
+#poster {
+    padding: 10px;
+    border-radius: 6px;
+    background-color: floralwhite;
+    border: 5px dotted rgb(236, 182, 44);
+}
+
+#plot {
+    max-width: 500px;
+    margin: 10px auto;
+}

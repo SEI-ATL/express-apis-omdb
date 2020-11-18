@@ -9,11 +9,12 @@ const apiKey = process.env.API_KEY;
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
 // Specifies the location of the static assets folder
-app.use(express.static('static'));
+app.use(express.static(__dirname + '/static'));
 // Sets up body-parser for parsing form data
 app.use(express.urlencoded({ extended: false }));
 // Enables EJS Layouts middleware
 app.use(ejsLayouts);
+
 
 // Adds some logging to each request
 app.use(require('morgan')('dev'));
