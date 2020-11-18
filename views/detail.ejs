@@ -1,6 +1,14 @@
 <h1><%= title %></h1>
-<ul>
-<% for (const [k, v] of Object.entries(details)){ %>
-    <li><%= k %>: <%= v %><br/></li>
-<%}; %>
-</ul>
+<img src="<%= details.Poster %>" class="posterdetails" />
+<p><%= rating %>/10</p>
+<div class="details">
+  <ul>
+    <% for (const [k, v] of Object.entries(details)){ %>
+    <li>
+      <% if (k !== "Poster" && k !=="Ratings" && k!== "Response"){ %>
+      <span class="key"><%= k %>: </span><span class="value"><%= v %></span>
+      <% } %>
+    </li>
+    <%}; %>
+  </ul>
+</div>

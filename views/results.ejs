@@ -1,14 +1,23 @@
 <h1><%= title %></h1>
-<h2>Matches <%= results.length %></h2>
 <ul>
   <% results.forEach (movie => {%>
   <li>
-    Title: <%= movie.Title %> <br />
-    Year: <%= movie.Year %> <br />
-    imdbID: <%= movie.imdbID %> <br />
-    Type: <%= movie.Type %> <br />
-    <img src="<%= movie.Poster %>" /><br />
-    <a href = "/movies/<%= movie.imdbID %>">LINK</a>
+    <div class="results">
+      <div class="poster">
+        <img src="<%= movie.Poster %>" />
+      </div>
+      <div class="text">
+        <span class="key">Title:</span>
+        <span class="value"><%= movie.Title %><br /> </span>
+        <span class="key">Year:</span>
+        <span class="value"><%= movie.Year %> </span><br />
+        <span class="key">imdbID:</span>
+        <span class="value"><%= movie.imdbID %> </span><br />
+        <span class="key">Type:</span>
+        <span class="value"><%= movie.Type %> </span><br />
+        <a href="/movies/<%= movie.imdbID %>">LINK</a>
+      </div>
+    </div>
   </li>
   <% }); %>
 </ul>

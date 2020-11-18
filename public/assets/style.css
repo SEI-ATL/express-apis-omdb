@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text&display=swap');
+
+body {
+  background-color: black;
+}
+
+.container {
+  background-color: #262833;
+  color: white;
+  margin: 0 auto;
+  width: 50%;
+
+  border: 5px solid white;
+  margin-top: 3%;
+  font-family: 'Big Shoulders Inline Text', cursive;
+  padding: 5%;
+}
+
+img {
+  width: 200px;
+  height: 100%;
+}
+
+h1 {
+  color: #7e8ce0;
+  font-size: 60px;
+  text-align: center;
+}
+h2 {
+  color: #36c7d0;
+  font-size: 30px;
+  text-align: center;
+}
+
+p{
+    text-align: center;
+}
+.search {
+  text-align: center;
+}
+a {
+  font-size: 40px;
+}
+a:link {
+  color: #7e8ce0;
+}
+a:visited {
+  color: #ffa48e;
+}
+
+a:hover {
+  color: #36c7d0;
+}
+
+a:active {
+  color: #36c7d0;
+}
+
+li {
+  color: #36c7d0;
+  list-style: none;
+  padding: 10px 0 0 0;
+}
+
+p {
+  font-size: 25px;
+  color: white;
+}
+
+input {
+  width: 400px;
+  font-size: 20px;
+  font-family: 'Big Shoulders Inline Text', cursive;
+}
+
+label,
+#submit {
+  width: 70px;
+  font-family: 'Big Shoulders Inline Text', cursive;
+  font-size: 20px;
+}
+
+.text,
+.poster {
+  display: inline-block;
+  margin: 10px;
+}
+
+.text {
+  vertical-align: top;
+  padding-top: 20px;
+  text-align: left;
+}
+
+.details {
+  text-align: center;
+}
+
+.key {
+  color: #36c7d0;
+  font-size: 40px;
+}
+
+.value {
+  color: white;
+  font-size: 30px;
+}
+
+.posterdetails {
+  height: 400px;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
