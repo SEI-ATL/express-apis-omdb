@@ -11,6 +11,12 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
+app.get('/results?:movieName', function (req, res) {
+    const movieName = req.params.movieName
+
+    res.render('results', { movieName: movieName })
+})
+
 app.listen(8000, () => {
     console.log('server started')
 })
