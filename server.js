@@ -32,10 +32,10 @@ app.get('/results', (req, res) => {
 
 app.get('/movies/:movie_id', (req, res) => {
   const imdb = req.params.movie_id
-  axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${imdb}`).then(function (response) {
-    const title = `Movie Details: ${imdb} `
+  axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${imdb}`).then(function (response) {
+    const movieTitle = response.data.Title
     
-    res.render('detail', { title, details: response.data });
+    res.render('detail', { movieTitle });
   }).catch(error => console.log(error))
 })
   
