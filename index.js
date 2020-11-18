@@ -3,16 +3,15 @@ const app = express();
 const layouts = require('express-ejs-layouts');
 const fetch = require("node-fetch");
 const dotenv = require('dotenv').config();
-const search = 'godfather';
 
 const movieRouter = require('./controllers/movieController')
 api_key = process.env.api_key
 
 // console.log(process.env); 
 
-fetch(`http://www.omdbapi.com/?apikey=${api_key}&s=${search}`)
-    .then(response => response.json())
-    .then(response => console.log(response.title))
+// fetch(`http://www.omdbapi.com/?apikey=${api_key}&s=${search}`)
+//     .then(response => response.json())
+//     .then(response => console.log(response))
 
 app.set('view engine', 'ejs')
 app.use(layouts)
