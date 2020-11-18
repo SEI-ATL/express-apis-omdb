@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
+const axios = require('axios');
+const searchRouter = require('./controllers/searchController')
+// const dinoRouter = require('express').Router()
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -15,10 +18,33 @@ app.use(ejsLayouts);
 // Adds some logging to each request
 app.use(require('morgan')('dev'));
 
+app.use('/results', searchRouter);
 // Routes
-app.get('/', function(req, res) {
-  res.send('Hello, backend!');
+app.get('/', (req, res) => {
+  res.render('./index');
 });
+app.get('/movies/:movie_id', (req, res) => {
+  res.render('./detail');
+})
+
+// app.get('/results', (req, res) => {
+//   res.render('Hello results!');
+// })
+// Make a request for a user with a given ID
+// axios.get('/user', {
+//     params: {
+//       ID: 12345
+//     }
+//   })
+//   .then(function (response) {
+//     console.log(response);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   })
+//   .then(function () {
+//     // always executed
+//   });
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
