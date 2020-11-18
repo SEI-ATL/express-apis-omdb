@@ -42,12 +42,12 @@ movieRouter.get('/', (req, res) => {
   movieRouter.get('/:movie_id', async function(req, res){
     const movieId =req.params.movie_id;
     // const query = plusWord(req.query.q)
-    await axios.get('http://www.omdbapi.com/?i='+movieID+'&'+api)
+    await axios.get('http://www.omdbapi.com/?i='+movieId+'&'+api)
     .then(reso => {
        
         let obj = reso.data
         console.log(obj)
-        res.render('details', {obj});
+        res.render('detail', {obj});
     })
     .catch(err => {
         console.log(err);

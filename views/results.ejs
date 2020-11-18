@@ -1,10 +1,10 @@
 RESULTS
 <% // Render your search results here %>
 <% // This is how to do comments in EJS, by the way... %>
-<h3><%=obj.length %></h3>
+<h3>You have <%=obj.length %> results</h3>
 
 <% obj.forEach((el) => { %>
     <h3><%=el.Title %></h3>
     <img src="<%= el.Poster %>" width="50" height="auto">
-    <a href="movies/<%= el.imdbID %>">Details</a>
+    <a href="/movies/<%= el.imdbID %>">Details</a>
     <% }) %>
