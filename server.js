@@ -30,7 +30,7 @@ app.get('/results', (req, res) => {
   // Make a request for a user with a given ID
   axios
     .get(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=${query}`)
-    .then(function (response) {
+    .then((response)=> {
       // handle success
       //res.send(response.data.Search)
       const title = `${response.data.Search.length} Matches Found for '${query}'`;
@@ -40,7 +40,7 @@ app.get('/results', (req, res) => {
       });
     })
     .catch((error) => {
-      res.send('Bad Search');
+      res.redirect('index');
       console.log(error);
     });
 });
@@ -50,16 +50,30 @@ app.get('/movies/:movie_id', (req, res) => {
 
   axios
     .get(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&i=${movieid}`)
-    .then(function (response) {
+    .then((response) => {
       const title = `Movie Details: ${movieid}`;
-      //use a reduce to reduce the obj
-      const star = "⭐";
+      const excludeKey = ['Poster', 'Ratings', 'Response'];
+
+      const filterData = Object.keys(response.data).reduce((result, k) => {
+        if (!excludeKey.includes(k)) {
+          result[k] = response.data[k];
+        }
+        return result;
+      }, {});
+
+      console.log(filterData);
+
+      const star = '⭐';
       const rating = star.repeat(Math.floor(response.data.imdbRating));
-      res.render('detail', { title, details: response.data, rating});
-      console.log(response.data);
+      res.render('detail', {
+        title,
+        details: filterData,
+        rating,
+        poster: response.data.Poster,
+      });
     })
     .catch((error) => {
-      res.send('Bad Link');
+      res.redirect('index');
       console.log(error);
     });
 });
