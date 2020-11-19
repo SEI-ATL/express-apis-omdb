@@ -5,13 +5,13 @@
     <%= movieDetails.Title%>
 </h1>
 <img src="<%= movieDetails.Poster %>" alt="<%= movieDetails.Title %> Poster">
-<p>Starring <%= movieDetails.Actors %></p>
-<p>Released in <%= movieDetails.Year %></p>
-<p>Rated <%= movieDetails.Rated %></p>
-<p>Directed by <%= movieDetails.Director%></p>
-<p>Written by <%= movieDetails.Writer %></p>
 
-<form action="/movies/faves" method="POST">
+<% const props = ['Title', 'Year', 'Rated', 'Released', 'Runtime', 'Genre', 'Director', 'Writer', 'Actors', 'Plot'] %>
+<% for (prop of props) { %>
+<p><%= prop %> : <%= movieDetails[prop] %> </p>
+<% } %>
+
+<form action="movies/faves" method="POST">
     <label>Add to Favorites</label>
     <input type="hidden" name="title" value="<%= movieDetails.Title %>">
     <input type="hidden" name="imdbid" value="<%= movieDetails.imdbID %>">
