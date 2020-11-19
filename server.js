@@ -64,8 +64,16 @@ app.post('/faves', (req, res) => {
   console.log(newFave)
 
   res.redirect('/')
-});
-
+  console.log(newFave.Title)
+  console.log(newFave.imdbID);
+  db.fave.create({
+      title: newFave.Title,
+      imdbid: newFave.imdbID,
+  }).then(createdUser => {
+      console.log(createdUser.get())
+      res.render('faves')
+  }) 
+})
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);

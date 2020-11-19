@@ -11,3 +11,9 @@
     <%}; %>
   </ul>
 </div>
+
+<form method="POST" action="/faves">
+  <input type="text" hidden name="Title" id="Title" value="<%= idResults.Title %> ">
+  <input type="text" hidden name="imdbID" id="imdbID" value="<%= idResults.imdbID %> ">
+  <input type="submit" value="Fave">
+</form> 
