@@ -25,11 +25,19 @@ app.get('/', function(req, res) {
 app.use('/movies', movieRouter)
 // The app.listen function returns a server handle
 app.get('/faves', function (req, res){
-
-
-  res.render('faves', {db})
-  
+  let faves;
+  db.fave.findAll().then(allUsers =>{
+    allUsers.get();
+    faves = allUsers;
+    return faves;
   })
+  console.log(faves)
+
+  
+  res.render('faves', {faves})
+});
+
+
   
   
   
