@@ -47,7 +47,7 @@ app.get('/results', (req, res) => {
     })
     .catch((error) => {
       res.redirect('/');
-      console.log(error);
+      console.log('error', error);
     });
 });
 
