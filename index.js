@@ -33,6 +33,13 @@ app.get('/movies/:movie_id', (req, res) => {
 })
 })
 
+app.get('/faves', (req, res) => {
+    db.fave.findAll().then(allFaves => {
+    console.log(allFaves);
+    res.render('faves', { allFaves })
+})
+})
+
 app.post('/faves', (req, res) => {
     const newFave = req.body
     console.log(newFave.Title)
@@ -40,13 +47,11 @@ app.post('/faves', (req, res) => {
     db.fave.create({
         title: newFave.Title,
         imdbid: newFave.imdbID,
-    }).then(createdUser => {
-        console.log(createdUser.get())
-        res.render('faves')
+    }).then(createdFave => {
+        res.redirect('/')
     }) 
 })
 
 app.listen(8000, () => {
     console.log('server started')
 })
-
