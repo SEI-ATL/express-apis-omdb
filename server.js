@@ -3,6 +3,9 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 
+const { response } = require('express');
+const db = require('./models');
+
 
 
 // Sets EJS as the view engine
