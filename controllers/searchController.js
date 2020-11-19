@@ -1,5 +1,6 @@
 const fs = require('fs')
 const searchRouter = require('express').Router()
+const axios = require('axios')
 
 // trying to test on local JSON data first
 // searchRouter.get('/:title', (req, res) => {
@@ -11,16 +12,20 @@ const searchRouter = require('express').Router()
 //   res.render('detail', { dino: movie.title })
 // })
 
-searchRouter.get('/results', (req, res) => {
-  let movieTitle = req.query.title;
-  // didn't realize axios had to be inside this!
-  axios.get(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${API_KEY}`, (res) => {
-    let movieData = res.json.data;
-  }).then((movieData) => {
-    console.log(movieData.data.title);
-    res.render('/results', {data: movieData.data});
-  })
+const api = process.env.API
+
+searchRouter.get('/', (req, res) => {
+  res.render('movies/index');
 })
 
+searchRouter.get('/results', (req, res) => {
+  let TITLE = 'matrix';
+  // didn't realize axios had to be inside this!
+  axios.get(`http://www.omdbapi.com/?t=${TITLE}&apikey=${API_KEY}`, (res) => {
+  }).then((response) => {
+    const movieData = {title: res.data.title};
+    res.render('movies/results/', movieData);
+  })
+})
 
 module.exports = searchRouter

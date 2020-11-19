@@ -27,25 +27,6 @@ app.get('/movies/:movie_id', (req, res) => {
   res.render('./detail');
 })
 
-// app.get('/results', (req, res) => {
-//   res.render('Hello results!');
-// })
-// Make a request for a user with a given ID
-// axios.get('/user', {
-//     params: {
-//       ID: 12345
-//     }
-//   })
-//   .then(function (response) {
-//     console.log(response);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   })
-//   .then(function () {
-//     // always executed
-//   });
-
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
 
