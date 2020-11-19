@@ -3,3 +3,15 @@
 <h1>
     <%= myDetails.Title%>
 </h1>
+
+<form action="/movies/faves" method="POST">
+    <label> Users Favorites</label>
+    
+    <input type="hidden" name="title" 
+    value="<%= myDetails.Title %>">
+    
+    <input type="hidden" name="imdbid" 
+    value="<%= myvieDetails.imdbID %>">
+    
+    <input type="submit">
+</form> 
