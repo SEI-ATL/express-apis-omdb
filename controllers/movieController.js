@@ -1,5 +1,6 @@
 const movieRouter = require("express").Router();
 const axios = require("axios");
+const db = require('../models');
 
 movieRouter.get("/", (req, res) => {
   res.render("movies/index");
@@ -13,6 +14,7 @@ movieRouter.get("/results", (req, res) => {
       `http://www.omdbapi.com/?s=${query}&apikey=${process.env.API_KEY}`)
     .then((response) => {
       const results = response.data.Search
+      console.log(results)
       res.render("movies/results", { query: response.data.Search })
     })
     .catch((error) => {
@@ -33,11 +35,22 @@ movieRouter.get("/movies/:movie_id", (req, res) => {
     console.log(error)
   })
 })
-module.exports = movieRouter;
 
-// When user clicks "SUBMIT", grab user text from Search box
-// Store that text in a variable
-// Include that text in search API string
-// I.e. the search text will need to be stored in a variable.
-// JSON.parse to parse the data
-//
+movieRouter.post("/faves", (req, res) => {
+  const faveMovies = req.body;
+  db.fave.create({
+    title: faveMovies.title,
+    imdbid: faveMovies.imdbID
+  }).then(createdFave => {
+    console.log(createdFave)
+  })
+})
+
+movieRouter.get("/getall", (req, res) => {
+  db.fave.findAll().then(allUsers => {
+    console.log(allUsers)
+});
+})
+
+
+module.exports = movieRouter;

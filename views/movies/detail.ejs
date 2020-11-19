@@ -10,3 +10,10 @@
 <p>Rated <%= movieDetails.Rated %></p>
 <p>Directed by <%= movieDetails.Director%></p>
 <p>Written by <%= movieDetails.Writer %></p>
+
+<form action="/movies/faves" method="POST">
+    <label>Add to Favorites</label>
+    <input type="hidden" name="title" value="<%= movieDetails.Title %>">
+    <input type="hidden" name="imdbid" value="<%= movieDetails.imdbID %>">
+    <input type="submit">
+</form>

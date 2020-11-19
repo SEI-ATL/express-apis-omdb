@@ -72,6 +72,7 @@ to a route like `/movies/tt234323` (where `tt234323` is the IMDBid for that movi
 7. Modify your `detail.ejs` to include a form for adding this movie as a fave:
   * This form should have a `POST` method, with an action of `/faves`
   * It should contain two *hidden* fields containing the title and IMDB ID of this movie. These fields should be named the same as your model attribute names.
+****
 8. Write your POST route for `/faves`:
   * Use `req.body` to access body data from the form.
   * Use the fave model to save this data to your database. YOU WILL NEED TO REQUIRE THE MODEL TO USE IT.
