@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios').default;
 const ejsLayouts = require('express-ejs-layouts');
 const path = require('path'); 
+const db = require('./models');
 
 const app = express();
 
@@ -56,6 +57,13 @@ app.get('/movies/:movie_id', (req, res) => {
       res.send('Error');
       console.log(error);
     });
+});
+
+app.post('/faves', (req, res) => {
+  const newFave = req.body
+  console.log(newFave)
+
+  res.redirect('/')
 });
 
 
