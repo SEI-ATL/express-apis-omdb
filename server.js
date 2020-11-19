@@ -63,23 +63,42 @@ app.get('/movies/:movie_id', (req, res) => {
 });
 
 app.get('/faves', (req, res) => {
-  db.fave.findAll().then(allFaves => {
-  console.log(allFaves);
-  res.render('faves', { allFaves })
-})
+  const allfaves = [];
+
+  db.fave.findAll().then((all) => {
+
+    all.forEach((fave) => {
+      allfaves.push(fave.get());
+    });
+    res.render('faves', { title: 'Favorites', allfaves });
+  });
 });
 
-app.post('/faves', (req, res) => {
-  const newFave = req.body
-  db.fave.create({
-      title: newFave.Title,
-      imdbid: newFave.imdbID,
-  }).then(createdFave => {
-      res.redirect('/')
-  }) 
-})
+// CREATE THE POST ROUTE
+
+app.post('/', (req, res) => {
+  const fave = req.body;
+  const fave_imdbid = req.body.imdbid;
+
+  db.fave
+    .findAll({
+      where: { imdbid: fave_imdbid },
+    })
+    .then((results) => {
+      if (!results.length) {
+        db.fave.create(
+          req.body
+        );
+      }
+      res.redirect('/faves'); 
+    });
+});
 
 
-// The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
+
+module.exports = server;
+
+
+
 

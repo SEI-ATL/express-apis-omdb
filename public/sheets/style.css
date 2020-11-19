@@ -28,8 +28,15 @@
     padding: 10px 40px;
 }
 
+
 .details {
     display: flex;
     justify-content: center;
+    font-family: 'Baloo Bhai 2', cursive;
+}
+
+.fave {
+    display: flex;
+    justify-content: flex-end;
     font-family: 'Baloo Bhai 2', cursive;
 }
