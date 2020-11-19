@@ -4,6 +4,8 @@ const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios').default;
 
+const db = require('./models')
+
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -55,6 +57,29 @@ app.get('/movies/:movie_id', (req,res) => {
     res.render('detail', { movie })
   })
 })
+app.get('/faves', (req, res) => {
+  
+  db.fave.findAll().then(allFaves => {
+  console.log(allFaves);
+  res.render('faves', { allFaves})
+});
+
+})
+
+app.post('/faves', (req, res) => {
+  console.log(req.body);
+  console.log(req.body.movieimdbID);
+  db.fave.create({
+    title: req.body.movieTitle,
+    imdbid: req.body.movieimdbID
+  }).then(newMovie => {
+    console.log(newMovie);
+  })
+
+
+  res.redirect('/faves')
+})
+
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
 

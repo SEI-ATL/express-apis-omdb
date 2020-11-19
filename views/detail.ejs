@@ -9,3 +9,11 @@
 <h3>Language:  <%= movie.Language %> </h3>
 <h3>Country:  <%= movie.Country %> </h3>
 <h3>imdbRating:  <%= movie.imdbRating %> </h3>
+
+<form method="POST" action="/faves">
+    
+    <label for="fave">Add To Fave</label>
+    <input type="hidden" id="movieTitle" name="movieTitle" value="<%= movie.Title %>">
+    <input type="hidden" id="movieimdbID" name="movieimdbID" value="<%= movie.imdbID %>">
+    <input type="submit">
+</form>

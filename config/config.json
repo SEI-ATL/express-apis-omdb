@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Litotwin#1",
+    "database": "express-apis-omdb_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Litotwin#1",
+    "database": "express-apis-omdb_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Litotwin#1",
+    "database": "express-apis-omdb_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
