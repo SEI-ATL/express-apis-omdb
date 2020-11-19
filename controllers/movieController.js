@@ -50,8 +50,15 @@ movieRouter.get('/faves', function (req, res){
         res.render('faves', {allFaves})
         console.log(allFaves)
 
+        .then(res.redirect('/faves')) })
     })
-})
+
+// movieRouter.delete('/', function(req, res){
+//     db.fave.destroy({ truncate : true, cascade: false })
+//     res.redirect('/faves')
+
+// WORK ON IT Maybe something like value of button is imdb id and delete that id from the table???
+// })
 
 
 

@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: false }));
 // Enables EJS Layouts middleware
 app.use(ejsLayouts);
 
+app.use('/public', express.static('public'))
+
 // Adds some logging to each request
 app.use(require('morgan')('dev'));
 
@@ -21,7 +23,7 @@ app.get('/', function(req, res) {
 });
 
 // The app.listen function returns a server handle
-var server = app.listen(process.env.PORT || 3000);
+var server = app.listen(process.env.PORT || 8000);
 
 // We can export this server to other servers like this
 module.exports = server;

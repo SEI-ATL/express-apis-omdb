@@ -1,9 +1,12 @@
-<form action="/faves"method=GET>
+<form action="/movies/faves"method=GET>
 
     <h1>Favorites</h1>
     <ul>
         <% allFaves.forEach(favorite => { %>
       <li>      <%= favorite.title %>     </li>
+      <form action="" method=DELETE>
+        <input type="submit" value="Delete">
+      </form>
       <%  }) %>
     </ul>
     </form>
