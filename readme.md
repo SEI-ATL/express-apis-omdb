@@ -85,3 +85,8 @@ to a route like `/movies/tt234323` (where `tt234323` is the IMDBid for that movi
 ## Licensing
 1. All content is licensed under a CC-BY-NC-SA 4.0 license.
 2. All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.
+
+ <% results.forEach(movie => { %>
+    <h2> <%= movie.Title %> </h2>
+    <p> <%= movie.Year %> </p>
+<% }) %> 
