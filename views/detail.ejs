@@ -6,3 +6,10 @@
 </h1>
 <p><%= movieDetails.Plot %></p>
 <img src= <%= movieDetails.Poster %>>
+<form action="/movies/faves" method=POST>
+
+<input type="hidden" name="movieName" value="<%= movieDetails.Title %>">
+<input type="hidden" name="imbdid" value="<%=movieDetails.imdbID%>">
+<button type="submit">Favorite</button>
+
+</form>
