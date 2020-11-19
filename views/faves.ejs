@@ -1,0 +1,19 @@
+<h1 class='siteTitle'>
+    FAVORITE MOVIES:
+</h1>
+<div class="movieGrid">
+    <% faves.forEach((fave) => { %>
+        <div class="movieDetail">
+            <h4 class='title'>
+                <%= fave.Title.toUpperCase() %>
+            </h4>
+            <% if (fave.Poster !== 'N/A') { %>
+                <a class='img' href="/movies/<%= fave.imdbID %> "><img src="<%= fave.Poster %> " alt="<%= fave.Title %> "></a>
+                <% } else { %>
+                    <a class='img' href="/movies/<%= fave.imdbID %> ">Poster not found</a>
+                    <% } %>
+                        <a href="/movies/<%= fave.imdbID %> ">View More</a>
+
+        </div>
+        <% }) %>
+</div>

@@ -1,36 +1,38 @@
-<% // Render individual movie details here %>
-    <% // This is how to do comments in EJS, by the way... %>
-
-        <h1 class='siteTitle'>
-            <%= movie.Title.toUpperCase() %>
-        </h1>
-        <h3>Directed by:
-            <%= movie.Director %>
-                <span>[<%= movie.Year %>]</span>
-        </h3>
-        <% if (movie.Poster !== 'N/A') { %>
-            <img id="poster" src="<%= movie.Poster %> " alt="<%= movie.Title %> ">
-            <% } %>
-                <h5 id='plot'>
-                    <%= movie.Plot %>
-                </h5>
-                <h5>Rated:
-                    <%= movie.Rated %>
-                        </br>
-                        Runtime
-                        <%= movie.Runtime %>
-                </h5>
-                <p>
-                    <% if (movie.Ratings.length > 2) { %>
-                        <%for(i=Math.floor((movie.Ratings[1].Value.slice(0, (movie.Ratings[1].Value.length-1)))/10);i>0; i--){ %>
-                            <%= '🍅' %>
-                                <%}%>
-                                    </br>
-                                    <%=movie.Ratings[1].Value %> on Rotten Tomatoes</p>
-                <% } %>
-                    <p>
-                        <%for(i=Math.floor(movie.imdbRating);i>0; i--){ %>
-                            <%= '⭐' %>
-                                <%}%>
-                                    </br>
-                                    <%=movie.imdbRating %> on IMDB </p>
+<h1 class='siteTitle'>
+    <%= movie.Title.toUpperCase() %>
+</h1>
+<h3>Directed by:
+    <%= movie.Director %>
+        <span>[<%= movie.Year %>]</span>
+</h3>
+<% if (movie.Poster !== 'N/A') { %>
+    <img id="poster" src="<%= movie.Poster %> " alt="<%= movie.Title %> ">
+    <% } %>
+        <h5 id='plot'>
+            <%= movie.Plot %>
+        </h5>
+        <h5>Rated:
+            <%= movie.Rated %>
+                </br>
+                Runtime
+                <%= movie.Runtime %>
+        </h5>
+        <p>
+            <% if (movie.Ratings.length > 2) { %>
+                <%for(i=Math.floor((movie.Ratings[1].Value.slice(0, (movie.Ratings[1].Value.length-1)))/10);i>0; i--){ %>
+                    <%= '🍅' %>
+                        <%}%>
+                            </br>
+                            <%=movie.Ratings[1].Value %> on Rotten Tomatoes</p>
+        <% } %>
+            <p>
+                <%for(i=Math.floor(movie.imdbRating);i>0; i--){ %>
+                    <%= '⭐' %>
+                        <%}%>
+                            </br>
+                            <%=movie.imdbRating %> on IMDB </p>
+            <form action="/" method="POST">
+                <input type="submit" value='SAVE'>
+                <input type="hidden" name="title" value="<%=movie.Title%>">
+                <input type="hidden" name="movieId" value="<%=movie.imdbID%>">
+            </form>

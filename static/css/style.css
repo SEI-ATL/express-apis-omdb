@@ -53,6 +53,10 @@ a {
     height: 35vh;
 }
 
+.movieDetail a.viewMore {
+    border: 1px solid goldenrod;
+}
+
 .movieDetail h4 {
     width: 15vw;
 }

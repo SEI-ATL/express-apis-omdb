@@ -1,23 +1,21 @@
-<% // Render your search results here %>
-    <% // This is how to do comments in EJS, by the way... %>
+<h1 class='siteTitle'>
+    RESULTS FOR:
+    <%= title.toUpperCase() %>
+        </br>
+</h1>
+<div class="movieGrid">
+    <% results.forEach((result) => { %>
+        <div class="movieDetail">
+            <h4 class='title'>
+                <%= result.Title.toUpperCase() %>
+            </h4>
+            <% if (result.Poster !== 'N/A') { %>
+                <a class='img' href="/movies/<%= result.imdbID %> "><img src="<%= result.Poster %> " alt="<%= result.Title %> "></a>
+                <% } else { %>
+                    <a class='img' href="/movies/<%= result.imdbID %> ">Poster not found</a>
+                    <% } %>
+                        <a class='viewMore' href="/movies/<%= result.imdbID %> ">View More</a>
 
-        <h1 class='siteTitle'>RESULTS FOR:
-            <%= title.toUpperCase() %>
-                </br>
-        </h1>
-        <div class="movieGrid">
-            <% results.forEach((result) => { %>
-                <div class="movieDetail">
-                    <h4 class='title'>
-                        <%= result.Title.toUpperCase() %>
-                    </h4>
-                    <% if (result.Poster !== 'N/A') { %>
-                        <a class='img' href="/movies/<%= result.imdbID %> "><img src="<%= result.Poster %> " alt="<%= result.Title %> "></a>
-                        <% } else { %>
-                            <a class='img' href="/movies/<%= result.imdbID %> ">Poster not found</a>
-                            <% } %>
-                                <a href="/movies/<%= result.imdbID %> ">View More</a>
-
-                </div>
-                <% }) %>
         </div>
+        <% }) %>
+</div>

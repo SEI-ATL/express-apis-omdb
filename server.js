@@ -4,6 +4,7 @@ const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios');
 const apiKey = process.env.API_KEY;
+const db = require('./models')
 
 
 // Sets EJS as the view engine
@@ -22,6 +23,37 @@ app.use(require('morgan')('dev'));
 // Routes
 app.get('/', function(req, res) {
     res.render('index')
+});
+
+app.post('/', (req, res) => {
+    let movieTitle = req.body.title;
+    let movieId = req.body.movieId;
+    db.fave.create({
+        title: movieTitle,
+        imdbid: movieId
+    }).then(() => {
+        res.redirect('/faves');
+    })
+})
+
+
+app.get('/faves', (req, res) => {
+    //call the database info
+    db.fave.findAll()
+        .then((response) => {
+            let faves = [];
+            response.forEach(element => {
+                let movie = element.get();
+                let movie_id = movie.imdbid;
+                axios.get(`http://www.omdbapi.com/?i=${movie_id}&apikey=${apiKey}`).then((data) => {
+                    let movie = data.data;
+                    faves.push(movie);
+                }).then(() => {
+                    res.render('faves', { faves });
+                })
+            });
+        })
+
 });
 
 app.get('/results', (req, res) => {
