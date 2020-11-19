@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: false}))
 
 
 app.get('/', function(req, res){
-    res.send('hello I am alive!')
+    res.render('')
 })
 
 app.use('/movies', movieRouter)

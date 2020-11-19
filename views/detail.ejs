@@ -5,6 +5,13 @@
 <%= movieDetails.Title %>
 </h1>
 <p><%= movieDetails.Plot %></p>
+<ul>
+<li>Title: <%= movieDetails.Title%></li>
+<li>Release Date: <%= movieDetails.Released%></li>
+<li> IMDB ID:<%= movieDetails.imdbID%></li>
+<li>Type: <%= movieDetails.Type%></li>
+<li>Genre: <%= movieDetails.Genre%></li>
+</ul>
 <img src= <%= movieDetails.Poster %>>
 <form action="/movies/faves" method=POST>
 

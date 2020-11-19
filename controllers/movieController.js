@@ -2,10 +2,8 @@ const fs = require('fs')
 const fetch = require("node-fetch");
 const { default:axios } = require('axios');
 const db = require ('../models')
-// const { title } = require('process');
 
 const movieRouter = require('express').Router()
-// const db = require ('./models')
 
 movieRouter.get('/', function(req, res){
     res.render('index')
@@ -40,25 +38,20 @@ movieRouter.get('/details/:movieId', function(req, res){
 
 movieRouter.post('/faves', function (req, res){
     const favorites = req.body
-    // console.log(favorites, "favorites")
     db.fave.create({title: favorites.movieName, imdbid: favorites.imbdid})
     .then(faveMovie => {
-        // console.log(faveMovie.get())
     })
     res.redirect('faves')
 })
 
-
 movieRouter.get('/faves', function (req, res){
-
     db.fave.findAll().then(allFaves => {
 
-        console.log(allFaves)
         res.render('faves', {allFaves})
+        console.log(allFaves)
 
     })
 })
-
 
 
 
