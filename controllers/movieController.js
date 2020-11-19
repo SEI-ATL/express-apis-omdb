@@ -4,14 +4,19 @@ let axios = require('axios');
 let db = require('../models');
 
 movieRouter.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { error: req.query.error });
 });
 
 movieRouter.get('/results', async (req, res) => {
   try {
     let q = req.query.q;
     let response = await axios.get(`http://www.omdbapi.com/?s=${q}&apikey=${process.env.EXPRESS_APP_API_KEY_OMDB}`);
-    res.render('results', { searchResults: response.data.Search });
+    console.log(response);
+    if (response.data.Error) {
+      res.redirect(`/?error=${response.data.Error}`);
+    } else {
+      res.render('results', { searchResults: response.data.Search });
+    }
   } catch (error) {
     console.error(error);
   }

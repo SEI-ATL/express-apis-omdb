@@ -4,3 +4,7 @@
   <input type="text" name="q" id="q">
   <input type="submit" value="Search">
 </form>
+
+<% if (error) { %>
+<p style="color: red"><%= error %></p>
+<% }; %>

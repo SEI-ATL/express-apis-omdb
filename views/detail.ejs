@@ -9,8 +9,14 @@
 </form>
 
 <% for (let [key, value] of Object.entries(movieDetails)) { %>
-<% console.log(String(key)); %>
-<% if (key !== 'Title' && key !== 'Poster' && key !== 'Ratings') { %>
+<% if (key !== 'Title' 
+  && key !== 'Poster' 
+  && key !== 'Ratings'
+  && key !== 'Metascore' 
+  && key !== 'imdbRating'
+  && key !== 'imdbVotes'
+  && key !== 'imdbID'
+  && key !== 'Response') { %>
 <p><%= key + ': ' + value; %></p>
 <% } else if (key === 'Ratings') { %>
 <p><%= key + ':'; %></p>
