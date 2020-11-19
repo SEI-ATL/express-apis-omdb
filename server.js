@@ -16,13 +16,16 @@ app.use(express.urlencoded({ extended: false }));
 // Enables EJS Layouts middleware
 app.use(ejsLayouts);
 app.use('/', express.static(path.join(__dirname, 'public')));
-
-
 app.use(require('morgan')('dev')); 
+
+
 // Routes
+
+
 app.get('/', function (req, res) {
   res.render('index');
 });
+
 app.get('/results', (req, res) => {
   const query = req.query.q;
   // Make a request for a user with a given ID
@@ -56,24 +59,26 @@ app.get('/movies/:movie_id', (req, res) => {
     .catch((error) => {
       res.send('Error');
       console.log(error);
-    });
+    })
+});
+
+app.get('/faves', (req, res) => {
+  db.fave.findAll().then(allFaves => {
+  console.log(allFaves);
+  res.render('faves', { allFaves })
+})
 });
 
 app.post('/faves', (req, res) => {
   const newFave = req.body
-  console.log(newFave)
-
-  res.redirect('/')
-  console.log(newFave.Title)
-  console.log(newFave.imdbID);
   db.fave.create({
       title: newFave.Title,
       imdbid: newFave.imdbID,
-  }).then(createdUser => {
-      console.log(createdUser.get())
-      res.render('faves')
+  }).then(createdFave => {
+      res.redirect('/')
   }) 
 })
+
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
