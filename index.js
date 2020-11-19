@@ -35,9 +35,15 @@ app.get('/movies/:movie_id', (req, res) => {
 
 app.post('/faves', (req, res) => {
     const newFave = req.body
-    console.log(newFave)
-  
-    res.redirect('/')
+    console.log(newFave.Title)
+    console.log(newFave.imdbID);
+    db.fave.create({
+        title: newFave.Title,
+        imdbid: newFave.imdbID,
+    }).then(createdUser => {
+        console.log(createdUser.get())
+        res.render('faves')
+    }) 
 })
 
 app.listen(8000, () => {
