@@ -1,5 +1,6 @@
 const axios = require('axios').default
 const fs = require('fs')
+const db = require('./models');
 
 const movieRouter = require('express').Router()
 
@@ -39,5 +40,13 @@ movieRouter.get('/movies/:movie_id', (req, res)=>{
     });
 });
 
+//still figuring this out 
+movieRouter.post('/faves', (req, res) => {
+    const usersFave = req.body
+    db.fave.create9({
+        title: usersFave.title,
+        imdbid: usersFave.imdbid
+    })
+})
 
 module.exports = movieRouter;

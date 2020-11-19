@@ -3,6 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
+const db = require('./models');
 
 const movieController = require('./controllers/movieController');
 
