@@ -1,3 +1,4 @@
+const { getPriority } = require('os');
 require('dotenv').config();
 const db = require('./models')
 const express = require('express');
@@ -25,18 +26,14 @@ app.get('/', function(req, res) {
 app.use('/movies', movieRouter)
 // The app.listen function returns a server handle
 app.get('/faves', function (req, res){
-  let faves;
-  db.fave.findAll().then(allUsers =>{
-    allUsers.get();
-    faves = allUsers;
-    return faves;
+ 
+  db.fave.findAll().then((films )=> {
+    res.render('faves', {faves: films })
+   
   })
-  console.log(faves)
-
+ 
   
-  res.render('faves', {faves})
 });
-
 
   
   

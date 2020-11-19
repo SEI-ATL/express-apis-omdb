@@ -31,7 +31,7 @@ movieRouter.get('/', (req, res) => {
     .then(reso => {
        
         let obj = reso.data.Search
-        console.log(obj)
+       
         res.render('results', {obj});
     })
     .catch(err => {
@@ -48,7 +48,7 @@ movieRouter.get('/', (req, res) => {
     .then(reso => {
        
         let obj = reso.data
-        console.log(obj)
+       
         res.render('detail', {obj});
     })
     .catch(err => {
@@ -62,10 +62,10 @@ movieRouter.get('/', (req, res) => {
       db.fave.create({
         title: req.body.title,
         imbid: req.body.imbid
+      }).then((createdFave)=> {res.redirect('/faves')})
+
       })
-         res.redirect('/faves')            
-      
-  })
+        
 
 
 let rawTest= "TEST"
