@@ -1,4 +1,5 @@
 require('dotenv').config();
+const axios = require('axios')
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
@@ -15,10 +16,14 @@ app.use(ejsLayouts);
 // Adds some logging to each request
 app.use(require('morgan')('dev'));
 
+const movieController = require('./controllers/moviesController')
+
 // Routes
 app.get('/', function(req, res) {
-  res.send('Hello, backend!');
+  res.render('index');
 });
+
+app.use('/movies', movieController)
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
