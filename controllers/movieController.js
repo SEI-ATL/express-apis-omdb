@@ -1,6 +1,8 @@
+const db = require('../models')
 const fs = require('fs')
 const movieRouter =require('express').Router()
 const axios = require('axios');
+const { getPriority } = require('os');
 ////////////////////////////////
 require('dotenv').config()
 let string = 'http://www.omdbapi.com/?s=matrix&'
@@ -54,6 +56,15 @@ movieRouter.get('/', (req, res) => {
     });
     
    
+  })
+
+  movieRouter.post('/:movie_id', (req,res) => {
+      db.fave.create({
+        title: req.body.title,
+        imbid: req.body.imbid
+      })
+         res.redirect('/faves')            
+      
   })
 
 

@@ -1,6 +1,8 @@
 <% // Render individual movie details here %>
 <% // This is how to do comments in EJS, by the way... %>
 
+
+
     <h3><%=obj.Title %></h3>
     <img src="<%= obj.Poster %>" width="150" height="auto">
 
@@ -17,5 +19,12 @@
         <li>Country: <%= obj.Country %></li>
         <li>Awards: <%= obj.Awards %></li>
     </ul>
+
+    <form method="POST" action="/movies/faves">
+  
+        <input type="hidden" name="title" value="<%= obj.Title%>">
+        <input type="hidden" name="imbid"value="<%= obj.imdbID%>"> 
+        <input type="submit" value="Save" >
+         </form>
    
   

@@ -1,4 +1,5 @@
 require('dotenv').config();
+const db = require('./models')
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
@@ -23,8 +24,18 @@ app.get('/', function(req, res) {
 
 app.use('/movies', movieRouter)
 // The app.listen function returns a server handle
-var server = app.listen(process.env.PORT || 3000);
+app.get('/faves', function (req, res){
 
+
+  res.render('faves', {db})
+  
+  })
+  
+  
+  
+
+var server = app.listen(process.env.PORT || 3000);
+ 
 
 
 // We can export this server to other servers like this

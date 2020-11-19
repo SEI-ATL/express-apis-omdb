@@ -1,10 +1,5 @@
-const api=process.env.API
+const db =require('./models')
 
-function plusWord(string){
-    let arr = string.split(' ')
-    let newString = arr.join("+")
-    return newString;
-    console.log(newString)
-}
-
-plusWord('Your');
+db.fave.findAll().then(allUsers => {
+    console.log(allUsers.get());
+});
