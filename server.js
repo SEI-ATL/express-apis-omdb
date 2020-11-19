@@ -4,6 +4,8 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 
+const models = require('./models')
+
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
 // Specifies the location of the static assets folder
@@ -38,6 +40,22 @@ app.get('/movies/:imdbid', (req, res) => {
     res.render('detail', { details: response.data })
   })
 })
+
+
+
+app.post('/faves', (req, res) => {
+  models.fave.create(req.body).then((createdFave) => {
+    res.redirect('/faves')
+  })
+
+
+
+app.get('/faves', (req, res) => {
+  models.fave.findAll().then((foundFaves) => {
+    res.render('faves', { faves: foundFaves})
+  })
+})
+
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
 
