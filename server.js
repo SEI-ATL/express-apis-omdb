@@ -3,6 +3,8 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 const movieRouter = require('./controller/movieController');
+const db = require('./models');
+const fave = require('./models/fave');
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -18,12 +20,14 @@ app.use(require('morgan')('dev'));
 
 // Routes
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('movies/index');
 });
 
-app.get('/results', (req, res) => {
-  res.render('results')
-})
+// app.get('/movies/results', (req, res) => {
+//   res.render('movies/results')
+// })
+
+app.use('/movies', movieRouter)
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);

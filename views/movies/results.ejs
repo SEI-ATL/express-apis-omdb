@@ -1,0 +1,5 @@
+<% movies.forEach((movies) => { %> -->
+    <li>  <%= movies.Title %> 
+    <form method="GET" action="/"><a href="/movies/detail/<%=movies.imdbID%>">Details</a>
+    </li>
+        <% }) %>
