@@ -4,7 +4,7 @@
 <form method="POST" action="/faves">
     <input type="hidden" value="<%= movieTitle.Title %>" name="title">
     <input type="hidden" value="<%= movieTitle.imdbID %>" name="imdbid"> 
-    <button type="submit">Add to your faves</button>
+    <input type="submit" value="Add to faves">
 </form>
 
 <h1> <%= movieTitle.Title %>   </h1> 
@@ -16,3 +16,10 @@
          
     <% } %> 
 </ul>
+
+<% //const props = ['Title', 'Year', 'Rated', 'Released', 'Runtime', 'Genre', 'Director', 'Writer', 'Actors'] %> 
+
+<!-- <img src="<%=// movieTitle.Poster %>" alt=""> -->
+<% //for (prop of props) { %>
+    <!-- <p><%= //prop %> : <%= movieTitle.prop %> </p>  -->
+<% // } %>

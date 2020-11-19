@@ -2,7 +2,10 @@
 <h1>Faves</h1>
 <ul>
     <% allFaves.forEach(faves => { %>
-        <li> <%=faves.title%> </li>
+        <li> 
+            <a href="/movies/<%= faves.imdbid %>">
+                <%=faves.title%></a>
+        </li>
     <% }) %> 
 </ul>
 </form>

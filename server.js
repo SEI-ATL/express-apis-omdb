@@ -33,8 +33,11 @@ app.get('/results', (req, res) => {
   })
   
   app.get('/movies/:movie_id', (req, res) => {
+    //always log req to find data
+    // console.log(req);
     const imdb = req.params.movie_id
     axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${imdb}`).then(function (response) {
+      
       const movieTitle = response.data
       // console.log(movieTitle);
       res.render('detail', { movieTitle });
@@ -42,7 +45,8 @@ app.get('/results', (req, res) => {
   })
 
   app.post('/faves', (req, res) => {
-    db.fave.create({
+      // console.log(req);
+      db.fave.create({
       title: req.body.title,
       imdbid: req.body.imdbid
     }).then(() => {
