@@ -3,6 +3,8 @@ const { default: Axios } = require('axios');
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
+const db = require('./models');
+// const fave = require('./models/fave')
 
 const movieRouter = require('./controllers/movieController')
 
@@ -23,7 +25,7 @@ app.get('/', function(req, res) {
   res.send('im alive');
 });
 
-app.use('movies', movieRouter);
+app.use('/movies', movieRouter);
 
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);

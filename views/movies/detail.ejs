@@ -1,0 +1,26 @@
+<ul>
+    <li>Title: <%= movies.Title%></li>
+    <li>Year: <%= movies.Year%></li>
+    <li>Rated: <%= movies.Rated%></li>
+    <li>Released: <%= movies.Released%></li>
+    <li>Runtime: <%= movies.Runtime%></li>
+    <li>Genre: <%= movies.Genre%></li>
+    <li>Director: <%= movies.Director%></li>
+    <li>Writer: <%= movies.Writer%></li>
+    <li>Actors: <%= movies.Actors%></li>
+    <li>Plot: <%= movies.Plot%></li>
+    <li>Language: <%= movies.Language%></li>
+    <li>Country: <%= movies.Country%></li>
+    <li>Awards: <%= movies.Awards%></li>
+    <img src="<%=movies.Poster%> " alt="">
+</ul>
+
+<form method="post" action="/movies/faves">
+    <input type="hidden" value="<%= movies.Title %>" name="title">
+    <input type="hidden" value="<%= movies.imdbID %>" name="imdbid">
+    <button type="submit">Add to Favorites</button>
+</form>
+
+<form action="/movies" method="GET">
+    <input type="submit" value="Back To Search">
+</form>
