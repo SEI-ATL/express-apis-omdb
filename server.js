@@ -41,19 +41,16 @@ app.get('/faves', (req, res) => {
     //call the database info
     db.fave.findAll()
         .then((response) => {
-            let faves = [];
+            let movieCalls = [];
             response.forEach(element => {
                 let movie = element.get();
                 let movie_id = movie.imdbid;
-                axios.get(`http://www.omdbapi.com/?i=${movie_id}&apikey=${apiKey}`).then((data) => {
-                    let movie = data.data;
-                    faves.push(movie);
-                }).then(() => {
-                    res.render('faves', { faves });
-                })
+                movieCalls.push(axios.get(`http://www.omdbapi.com/?i=${movie_id}&apikey=${apiKey}`));
+            })
+            Promise.all(movieCalls).then((faves) => {
+                res.render('faves', { faves })
             });
-        })
-
+        });
 });
 
 app.get('/results', (req, res) => {

@@ -5,14 +5,14 @@
     <% faves.forEach((fave) => { %>
         <div class="movieDetail">
             <h4 class='title'>
-                <%= fave.Title.toUpperCase() %>
+                <%= fave.data.Title.toUpperCase() %>
             </h4>
-            <% if (fave.Poster !== 'N/A') { %>
-                <a class='img' href="/movies/<%= fave.imdbID %> "><img src="<%= fave.Poster %> " alt="<%= fave.Title %> "></a>
+            <% if (fave.data.Poster !== 'N/A') { %>
+                <a class='img' href="/movies/<%= fave.data.imdbID %> "><img src="<%= fave.data.Poster %> " alt="<%= fave.data.Title %> "></a>
                 <% } else { %>
-                    <a class='img' href="/movies/<%= fave.imdbID %> ">Poster not found</a>
+                    <a class='img' href="/movies/<%= fave.data.imdbID %> ">Poster not found</a>
                     <% } %>
-                        <a href="/movies/<%= fave.imdbID %> ">View More</a>
+                        <a class='viewMore' href="/movies/<%= fave.data.imdbID %> ">View More</a>
 
         </div>
         <% }) %>
