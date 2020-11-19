@@ -48,7 +48,7 @@ app.post('/faves', (req, res) => {
         title: newFave.Title,
         imdbid: newFave.imdbID,
     }).then(createdFave => {
-        res.redirect('/')
+        res.redirect('/faves')
     }) 
 })
 
