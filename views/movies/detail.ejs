@@ -2,6 +2,8 @@
 <% // This is how to do comments in EJS, by the way... %>
 <h1><%= details.Title %></h1>
 <img src="<%= details.Poster %>" alt="<%= details.Title %> Poster">
+</br>
+</br>
 <form action="/" method="POST">
     <input type="hidden" name="title" value="<%= details.Title %>">
     <input type="hidden" name="imdbId" value="<%= details.imdbID %>">
@@ -11,6 +13,7 @@
     <% for (let key in details) { %>
         <li>
             <%= key %>: <%= details[key] %>
+        </br>
         </li>
     <% } %>
 </ul>

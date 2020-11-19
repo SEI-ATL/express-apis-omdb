@@ -1,11 +1,8 @@
 <h1>FAVORITE MOVIES:</h1>
 <ol>
 <% allFaves.forEach((movie) => { %>
-    <%=console.log(movie.get())%>
     <li>
-        <h2>Title: <%= movie.title %></h2>
-        <h3>imdbid: <%= movie.imdbid %></h3>
-        <a href="/movies/<%= movie.imdbid %>">More Details</a>
+        <a href="/movies/<%= movie.imdbid %>"><h3><%= movie.title %></h3></a>
     </li>
 <% }) %>
 </ol>
