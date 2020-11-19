@@ -3,6 +3,7 @@ const app = express();
 const layouts = require('express-ejs-layouts');
 const axios = require('axios').default;
 require('dotenv').config();
+const db = require('./models');
 
 app.set('view engine', 'ejs');
 app.use(layouts);
@@ -28,9 +29,15 @@ app.get('/movies/:movie_id', (req, res) => {
     axios.get(`http://www.omdbapi.com/?i=${movieId}&apikey=${process.env.api}`)
     .then((response) => {
     const idResults = response.data
-    console.log(idResults);
     res.render('detail', { idResults })   
 })
+})
+
+app.post('/faves', (req, res) => {
+    const newFave = req.body
+    console.log(newFave)
+  
+    res.redirect('/')
 })
 
 app.listen(8000, () => {
