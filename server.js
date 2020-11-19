@@ -3,6 +3,7 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const axios = require('axios')
 
+const models = require('./models')
 
 const app = express();
 const { API_KEY: apikey } = process.env
@@ -55,6 +56,23 @@ app.get('/movies/:movieId', (req, res) => {
     })
 })
 
+app.get('/faves', (req, res) => {
+  models.faves.findAll().then(faves => {
+    const myFaves = []
+    faves.forEach(fave => {
+      let { title, imdbid } = fave.get()
+      myFaves.push({ title, imdbid })
+    })
+
+    res.render('faves', { faves: myFaves })
+  })
+})
+
+app.post('/faves', (req, res) => {
+  models.faves.create(req.body)
+    .then(data => { res.redirect('/faves') })
+    .catch(e => console.error(e))
+})
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Server running on http://localhost:${process.env.PORT || 3000}`)

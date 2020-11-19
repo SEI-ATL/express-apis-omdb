@@ -2,6 +2,11 @@
 <h2><%= details.Year %></h2>
 <div>
   <img src="<%= details.Poster %> " alt="Movie Poster" />
+  <form action="/faves" method="post">
+    <input type="hidden" name="title" value="<%= details.Title %> " />
+    <input type="hidden" name="imdbid" value="<%= details.imdbID %> " />
+    <button type="submit">Save as Fave</button>
+  </form>
   <p><%= details.Plot %></p>
   <p>Awards: <%= details.Awards %></p>
   <a onclick="goBack()" href="#">Back</a>

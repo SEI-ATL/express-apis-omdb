@@ -1,0 +1,7 @@
+<ul>
+  <% faves.forEach((fave) => { %>
+  <li>
+    <a href="/movies/<%= fave.imdbid %>"> <%= fave.title %> </a>
+  </li>
+  <% }) %>
+</ul>
