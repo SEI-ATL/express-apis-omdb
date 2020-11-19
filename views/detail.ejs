@@ -7,11 +7,13 @@
 <div class="details">
   <ul>
     <% for (const [x, y] of Object.entries(details)){ %>
-    <li>
-      <% if (x !== "Poster" && y !=="Ratings" && x!== "Response"){ %>
-      <span class="key"><%= x %>: </span><span class="value"><%= y %></span>
-      <% } %>
-    </li>
     <%}; %>
   </ul>
+</div>
+<div class="faves">
+  <form action="/faves" method="POST">
+      <label for="query">Movie Title:</label>
+      <input type="text" name="q" id="searchBar">
+      <input type="submit" id='submit'>
+  </form>
 </div>
