@@ -37,22 +37,19 @@ movieRouter.get("/movies/:movie_id", (req, res) => {
 })
 
 // POST TO FAVES
-movieRouter.post("/faves", (req, res) => {
-  const faveMovies = req.body;
-  db.fave.create({
-    title: faveMovies.title,
-    imdbid: faveMovies.imdbid
-  }).then(
-    res.redirect("movies/faves")
-  ).catch((error) => {
+movieRouter.post('/faves', (req, res) => {
+  console.log(db)
+  db.fave.create(req.body).then(() => {
+    res.redirect('/movies/faves')
+  }).catch((error) => {
     console.log(error)
   })
 })
 
 // GET FAVES
-movieRouter.get("movies/faves", (req, res) => {
-  db.fave.findAll().then(faves => {
-    res.render('movies/faves', {faves})
+movieRouter.get("/faves", (req, res) => {
+  db.fave.findAll().then(foundFaves => {
+    res.render('movies/faves', {foundFaves})
 });
 })
 
