@@ -1,4 +1,8 @@
 <% // Render your search results here %>
 <% // This is how to do comments in EJS, by the way... %>
 
-<h3>Searched title: <%= data.Title %> </h3> 
+<h1>Results for: <%= search %></h1>
+<% results.forEach((result) => { %>
+    <h2><%= result.Title %></h2>
+    <br><a href="/movies/<%= result.imdbID %> ">Details</a></br>
+    <% }) %> 
