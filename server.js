@@ -30,11 +30,12 @@ app.get('/movies/:movie_id', (req, res) => {
   res.render('./detail');
 })
 
+// this get request is COMBINED with the database request!
 app.get('/faves', (req, res) => {
   res.render('./faves');
 })
 
-db.fave.create({
+db.fave.create({ // MODELS is the target?
   id: 1, // how to grab this from the HIDDEN output of the EJS form // res.data.id?
   title: '', // how to grab this from the RESULT of the title search. This is the entrance (JOIN)
   imdbid: '' // grab this from the RESULT  // res.data.imdbid?
