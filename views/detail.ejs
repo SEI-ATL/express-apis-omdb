@@ -1,5 +1,21 @@
 <h1><%= title %></h1>
+<div class="fave">
+  <form method="POST" action="/">
+    <input id="title" type="hidden" name="title" value="<%= details.Title %>" />
+    <input
+      id="imdbid"
+      type="hidden"
+      name="imdbid"
+      value="<%= details.imdbID %>"
+    />
+    <input id="faveinput" type="submit" value="❤️ Add to Faves" />
+  </form>
+</div>
+
 <img src="<%= poster %>" class="posterdetails" />
+
+<!-- add button w/ event listener that makes an XmlHttpRequest (XHR)  -->
+
 <p><%= rating %>/10</p>
 <div class="details">
   <ul>

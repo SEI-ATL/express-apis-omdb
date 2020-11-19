@@ -1,0 +1,12 @@
+<h1><%= title %></h1>
+<ul>
+<% allfaves.forEach((fave)=>{%>
+    <li><span class="key"><%=fave.title%></span><span class="value"> - Details: <a href="/movies/<%= fave.imdbid %>"> <%=fave.imdbid %> </span></a></li>
+    <%});%>
+
+</ul>
+
+
+<form method="POST" action="/?_method=DELETE">
+    <input id = "delete" type="submit" value="🗑️ Delete (This is broke)">
+</form>
