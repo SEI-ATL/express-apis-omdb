@@ -16,15 +16,28 @@ app.use(ejsLayouts);
 // Adds some logging to each request
 app.use(require('morgan')('dev'));
 
-const movieController = require('./controllers/moviesController')
 
 // Routes
 app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.use('/movies', movieController)
+app.get('/results', (req, res) => {
+  const reqStr = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${req.query.q}`
+  
+  axios.get(reqStr).then((response) => {
+    console.log(response)
+    res.render('results', { movies: response.data.Search });
+  })
+})
 
+app.get('/movies/:imdbid', (req, res) => {
+  const reqStr = `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${req.query.q}`
+  
+  axios.get(reqStr).then((response) => {
+    res.render('detail', { details: response.data })
+  })
+})
 // The app.listen function returns a server handle
 var server = app.listen(process.env.PORT || 3000);
 
