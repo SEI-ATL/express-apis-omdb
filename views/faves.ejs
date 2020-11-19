@@ -3,7 +3,7 @@
     <% faves.forEach (fave => { %>
         <li>
             <p><%= fave.data.Title %></p>
-            <p><a href="/movies/<%= fave.data.imdbID %>" target="_blank">More Info</a></p>
+            <p><a href="/movies/<%= fave.data.imdbID %>">More Info</a></p>
         </li>
     <% }) %>
 </ul>

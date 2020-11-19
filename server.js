@@ -26,12 +26,12 @@ app.get('/results', (req, res) => {
     const query = req.query.q
     axios
         .get(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=${query}`)
-        .then((response) => {
+        .then(response => {
             const title = `${response.data.Search.length} Matches for '${query}'`
             res.render('results', { title, results: response.data.Search })
         })
-        .catch((error) => {
-            res.send('Search could not be completed')
+        .catch(error => {
+            res.send(error = 'Search could not be completed')
         })
 })
 
@@ -39,12 +39,12 @@ app.get('/movies/:movie_id', (req, res) => {
     const movieid = req.params.movie_id
     axios
         .get(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&i=${movieid}`)
-        .then((response) => {
+        .then(response => {
             const title = `Movie Details: ${movieid}`
             res.render('detail', { title, details: response.data })
         })
-        .catch((error) => {
-            res.send('Problem with link')
+        .catch(error => {
+            res.send(error = 'Problem with link')
         })
 })
 
@@ -58,12 +58,18 @@ app.get('/faves', (req, res) => {
                 const movieid = movie.imdbid
                 movies.push(axios
                     .get(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&i=${movieid}`)
-                    )
+                )
             })
             Promise.all(movies)
             .then(faves => {
                 res.render('faves', { faves })
             })
+            .catch(error => {
+                res.send(error = 'Problem with faves')
+            })
+        })
+        .catch(error => {
+            res.send(error = 'Problem with faves')
         })
 })
 
@@ -76,6 +82,9 @@ app.post('/faves', (req, res) => {
             imdbid: formID,
         }).then(createdFave => {
             res.redirect('/faves')
+        })
+        .catch(error => {
+            res.send(error = 'Problem with faves')
         })
 })
 
