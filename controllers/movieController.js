@@ -21,7 +21,6 @@ movieRouter.get('/movies/:movie_id', async (req, res) => {
   try {
     let movieId = req.params.movie_id;
     let response = await axios.get(`http://www.omdbapi.com/?i=${movieId}&apikey=${process.env.EXPRESS_APP_API_KEY_OMDB}`);
-    console.log(response.data);
     res.render('detail', { movieDetails: response.data });
   } catch (error) {
     console.error(error);
@@ -45,7 +44,6 @@ movieRouter.post('/faves', (req, res) => {
 movieRouter.get('/faves', (req, res) => {
   db.fave.findAll()
     .then(faves => {
-      console.log(faves);
       res.render('faves', { faves: faves });
     });
 });
