@@ -1,16 +1,14 @@
 <% // Render your search results here %>
 <% // This is how to do comments in EJS, by the way... %>
 <h1>Search results for: <%= search %></h1>
-<ul>
   <% results.forEach (movie => {%>
-  <li>
-    <ul>
+  <ul>
     <img src="<%= movie.Poster %>" alt="<%= movie.Title %> Poster">
-    <li><a href="/movies/<%= movie.imdbID %>">Details</a></li>
+    </br>
+    </br>
+    <li><a href="/movies/<%= movie.imdbID %>">More Details</a></li>
     <% for (let key in movie) { %>
-        <li><%= key %>: <%= movie[key] %></li>
+    <li><%= key %>: <%= movie[key] %></li>
     <% } %>
-    </ul>
-  </li>
+  </ul>
   <% }); %>
-</ul>

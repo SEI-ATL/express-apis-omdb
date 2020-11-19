@@ -5,7 +5,7 @@ const app = express();
 const axios = require('axios').default;
 const ejsLayouts = require('express-ejs-layouts');
 const path = require('path'); // for path
-
+const db = require('./models')
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -22,7 +22,7 @@ app.use(require('morgan')('dev')); ////???????????????? what is this
 
 // Routes
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('movies/index');
 });
 
 app.get('/results', (req, res) => {
@@ -31,7 +31,7 @@ app.get('/results', (req, res) => {
   axios.get(`http://www.omdbapi.com/?s=${search}&apikey=${process.env.API_KEY}`)
     .then(function (response) {
       const results = response.data.Search
-      res.render('results', { results, search })
+      res.render('movies/results', { results, search })
     })
     .catch((error) => {
       res.send(error);
@@ -40,15 +40,33 @@ app.get('/results', (req, res) => {
 
 app.get('/movies/:imdbID', (req, res) => {
   const imdbId = req.params.imdbID;
-
   axios.get(`http://www.omdbapi.com/?i=${imdbId}&apikey=${process.env.API_KEY}`)
     .then(function (response) {
       const details = response.data;
-      res.render('detail', { details })
+      res.render('movies/detail', { details })
     })
     .catch((error) => {
       res.send(error);
     })
+});
+
+app.post('/', (req, res) => {
+  let movieTitle = req.body.title;
+  let imdbId = req.body.imdbId;
+  db.fave.create({
+      title: movieTitle,
+      imdbid: imdbId
+  }).then(() => {
+      res.redirect('/faves');
+  })
+})
+
+
+app.get('/faves', (req, res) => {
+  db.fave.findAll()
+      .then((allFaves) => {
+        res.render('movies/faves', {allFaves})
+      })
 });
 
 // The app.listen function returns a server handle
