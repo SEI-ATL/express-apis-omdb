@@ -1,6 +1,7 @@
 const express = require("express");
   const app = express();
   const axios = require("axios"); 
+  const db = require('./models');
   require('dotenv').config();
 
   app.set("view engine", "ejs");

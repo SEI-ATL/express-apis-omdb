@@ -1,9 +1,11 @@
 const moviesController = require('express').Router()
-const axios = require('axios')
+const axios = require('axios');
+const db = require('../models');
+
 require('dotenv').config();
 
 moviesController.get('/', (req, res) => {
-    res.render('index')
+    res.render('movies/index')
 })
 moviesController.get('/detail/:id', (req, res) => {
     const searchTerm = req.params.id;
@@ -20,7 +22,7 @@ moviesController.get('/detail/:id', (req, res) => {
         })
 });
 
-moviesController.get('/:title', (req, res) => {
+moviesController.get('/title', (req, res) => {
     const searchTerm = req.query.title;
     axios
     .get(
@@ -34,5 +36,19 @@ moviesController.get('/:title', (req, res) => {
         })
 });
 
+moviesController.post('/faves', (req, res) => {
+    db.fave.create({
+        title: req.body.title,
+        imdbid: req.body.imdbid,
+    }).then(() => {
+        res.redirect('/movies/faves')
+    })
+})
+
+moviesController.get('/faves', function (req, res) {
+    db.fave.findAll().then(allFaves => {
+        res.render('movies/faves', {allFaves})
+        })
+    })
 
   module.exports = moviesController
