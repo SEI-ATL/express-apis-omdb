@@ -15,6 +15,16 @@
     <img src="<%=movies.Poster%> " alt="">
 </ul>
 
+<form method="post" action="/movies/faves">
+    <input type="hidden" value="<%= movies.Title %>" name="title">
+    <input type="hidden" value="<%= movies.imdbID %>" name="imdbid">
+    <button type="submit">Add to Favorites</button>
+</form>
+
+<form action="/movies" method="GET">
+    <input type="submit" value="Back To Search">
+</form>
+
 
 
 

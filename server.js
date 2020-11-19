@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
+const db = require('./models');
 
 const movieRouter = require('./controllers/movieController')
 
@@ -23,6 +24,8 @@ app.get('/', function(req, res) {
 });
 
 app.use('/movies', movieRouter)
+
+
 
 
 // The app.listen function returns a server handle
