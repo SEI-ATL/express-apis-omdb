@@ -45,22 +45,18 @@ movieRouter.post('/faves', function (req, res){
     .then(faveMovie => {
         // console.log(faveMovie.get())
     })
-    res.render('faves')
+    res.redirect('faves')
 })
 
 
 movieRouter.get('/faves', function (req, res){
-    // const favorites = req.body
-    console.log(favorites, "getfavorites")
+
     db.fave.findAll().then(allFaves => {
-            allFaves.forEach(fave => {
-        console.log(fave.get())
-    });
+
         console.log(allFaves)
+        res.render('faves', {allFaves})
+
     })
-    
-    res.render('faves', {favorites})
-    console.log("FAVORITES HERE")
 })
 
 
