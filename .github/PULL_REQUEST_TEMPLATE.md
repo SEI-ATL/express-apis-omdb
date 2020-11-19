@@ -3,8 +3,8 @@
 Please describe your comfort and completeness levels before submitting.
 
 Comfort Level (1-5): 
-1
+3
 Completeness Level (1-5):
-1
+5
 What did you think of this deliverable?:
-This was rude
+It was hard for me to understand how all the moving parts connected.
