@@ -1,0 +1,10 @@
+  
+<form action="/faves"method=GET>
+
+    <h1>Favorites</h1>
+    <ul>
+        <% allFaves.forEach(favorite => { %>
+      <li>      <%= favorite.title %>     </li>
+      <%  }) %>
+    </ul>
+    </form>
