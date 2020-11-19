@@ -8,7 +8,7 @@
     <% } %>
 </ul>
 <form method="POST" action="/faves">
-    <input type="hidden" name="title">
-    <input type="hidden" name="imdbid">
-    <input type="submit">
+    <input type="hidden" name="title" value="<%= details.Title %>">
+    <input type="hidden" name="imdbid" value="<%= details.imdbID %>">
+    <input type="submit" value="Save as Fave">
 </form>

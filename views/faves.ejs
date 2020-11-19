@@ -1,7 +1,9 @@
 <h1>Your Favorite Movies:</h1>
 <ul>
-    <li>
-        <p><%= title %></p>
-        <p><a href="/movies/<%= imdbid %>" target="_blank">More Info</a></p>
-    </li>
+    <% faves.forEach (fave => { %>
+        <li>
+            <p><%= fave.data.Title %></p>
+            <p><a href="/movies/<%= fave.data.imdbID %>" target="_blank">More Info</a></p>
+        </li>
+    <% }) %>
 </ul>

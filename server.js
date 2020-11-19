@@ -52,7 +52,18 @@ app.get('/faves', (req, res) => {
     db.fave
         .findAll()
         .then(allFaves => {
-            res.render('faves', { title, imdbid })
+            const movies = []
+            allFaves.forEach(fave => {
+                const movie = fave.get()
+                const movieid = movie.imdbid
+                movies.push(axios
+                    .get(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&i=${movieid}`)
+                    )
+            })
+            Promise.all(movies)
+            .then(faves => {
+                res.render('faves', { faves })
+            })
         })
 })
 
