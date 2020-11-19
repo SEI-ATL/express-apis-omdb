@@ -68,8 +68,8 @@ app.get('/faves', (req, res) => {
 })
 
 app.post('/faves', (req, res) => {
-    const formTitle = req.query.title
-    const formID = req.query.imdbid
+    const formTitle = req.body.title
+    const formID = req.body.imdbid
     db.fave
         .create({
             title: formTitle,
