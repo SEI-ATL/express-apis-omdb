@@ -4,6 +4,8 @@ const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 const axios = require('axios').default;
+const db = require('./models')
+
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
@@ -38,7 +40,21 @@ app.get('/results', (req, res) => {
       res.render('detail', { movieTitle });
     }).catch(error => console.log(error))
   })
-    
+
+  app.post('/faves', (req, res) => {
+    db.fave.create({
+      title: req.body.title,
+      imdbid: req.body.imdbid
+    }).then(() => {
+      res.redirect('/faves')
+    })
+  })
+  
+  app.get('/faves', (req, res) => {
+    db.fave.findAll().then(allFaves => {
+      res.render('faves', { allFaves })
+    })
+  })
     
 
     

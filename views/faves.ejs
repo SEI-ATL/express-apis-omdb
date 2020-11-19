@@ -1,0 +1,8 @@
+<form action="/faves" method="GET">
+<h1>Faves</h1>
+<ul>
+    <% allFaves.forEach(faves => { %>
+        <li> <%=faves.title%> </li>
+    <% }) %> 
+</ul>
+</form>
