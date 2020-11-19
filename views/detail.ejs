@@ -1,2 +1,13 @@
-<% // Render individual movie details here %>
-<% // This is how to do comments in EJS, by the way... %>
+<h1><%= details.Title %></h1>
+<h2><%= details.Year %></h2>
+<div>
+  <img src="<%= details.Poster %> " alt="Movie Poster" />
+  <p><%= details.Plot %></p>
+  <p>Awards: <%= details.Awards %></p>
+  <a onclick="goBack()" href="#">Back</a>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

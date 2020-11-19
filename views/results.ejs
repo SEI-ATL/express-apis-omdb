@@ -1,2 +1,9 @@
-<% // Render your search results here %>
-<% // This is how to do comments in EJS, by the way... %>
+<ul>
+  <% for( let i = 0; i < movies.length; i++ ) { %>
+  <li>
+    <a href="/movies/<%= movies[i].imdbID %> ">
+      <%= movies[i].Title %> - Released <%= movies[i].Year %>
+    </a>
+  </li>
+  <% } %>
+</ul>
