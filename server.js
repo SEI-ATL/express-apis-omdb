@@ -49,7 +49,11 @@ app.get('/movies/:movie_id', (req, res) => {
 })
 
 app.get('/faves', (req, res) => {
-    db.fave.findAll().then(allFaves => { res.render('faves') })
+    db.fave
+        .findAll()
+        .then(allFaves => {
+            res.render('faves', { title, imdbid })
+        })
 })
 
 app.post('/faves', (req, res) => {
