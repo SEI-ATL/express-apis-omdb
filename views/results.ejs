@@ -4,17 +4,17 @@
 <p>results:</p>
 
 <ul>
-    <% movies.forEach(movie => { %>
-        <li>Title: <%= movie.Title %> 
-            Year: <%= movie.Year %> 
-             <a href="/movies/<%= movie.imdbID %>">imdbID</a>     
-        Type: <%= movie.Type %> 
-        <img src="<%= movie.Poster %>" alt="poster">      
-        </li>
-    <% }) %> 
-
-</ul>
-        
+         <% movies.forEach(movie => { %>
+             <li>Title: <%= movie.Title %> 
+                  
+                  <a href="/movies/<%= movie.imdbID %>">More Info</a>     
              
+                  
+             </li>
+         <% }) %> 
+    
+     </ul>
+        
+           
 
 

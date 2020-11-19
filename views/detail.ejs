@@ -1,3 +1,11 @@
 <% // Render individual movie details here %>
 <% // This is how to do comments in EJS, by the way... %>
-<h1> <%= movieTitle.Title %>   </h1>
+<h1> <%= movieTitle.Title %>   </h1> 
+<img src="<%= movieTitle.Poster %>" alt="<%= movieTitle.Title %>Poster">
+<ul>
+    <% for (const [key, value] of Object.entries(movieTitle)) { %> 
+        
+        <li> <%= key %>: <%= value %></li>
+         
+    <% } %> 
+</ul>

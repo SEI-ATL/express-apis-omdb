@@ -23,22 +23,21 @@ app.get('/', function(req, res) {
 });
 
 app.get('/results', (req, res) => {
-  axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${req.query.title}`).then(function (response) {
-    const movies = response.data.Search
-    // console.log(movies);
-    res.render('results', { movies });
-  }).catch(error => console.log(error))
-})
-
-app.get('/movies/:movie_id', (req, res) => {
-  const imdb = req.params.movie_id
-  axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${imdb}`).then(function (response) {
-    const movieTitle = response.data
-    
-    res.render('detail', { movieTitle });
-  }).catch(error => console.log(error))
-})
+    axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${req.query.title}`).then(function (response) {
+      const movies = response.data.Search
+      // console.log(movies);
+      res.render('results', { movies });
+    }).catch(error => console.log(error))
+  })
   
+  app.get('/movies/:movie_id', (req, res) => {
+    const imdb = req.params.movie_id
+    axios.get(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${imdb}`).then(function (response) {
+      const movieTitle = response.data
+      // console.log(movieTitle);
+      res.render('detail', { movieTitle });
+    }).catch(error => console.log(error))
+  })
     
     
 
