@@ -9,3 +9,9 @@
     <li>Plot: <%= data.Plot %> </li>
     <li>Awards: <%= data.Awards %> </li>
 </ul>
+
+<form method="post" action="/faves">
+    <input type="hidden" value="<%= data.Title %>" name="title">
+    <input type="hidden" value="<%= data.imdbID %>" name="imdbid">
+    <button type="submit">Add to Favorites!</button>
+</form>

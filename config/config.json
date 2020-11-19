@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "omdbapp_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "omdbapp_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "omdbapp_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
