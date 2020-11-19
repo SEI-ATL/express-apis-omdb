@@ -2,8 +2,13 @@
 <img src="<%= details.Poster %>">
 <ul>
     <% for (const [key, value] of Object.entries(details)){ %>
-        <% if (key !== 'Poster' && key !== 'Response') { %> 
+        <% if (key !== "Poster" && key !== "Response") { %> 
             <li><%= key %>: <%= value %></li>
         <% } %> 
     <% } %>
 </ul>
+<form method="POST" action="/faves">
+    <input type="hidden" name="title">
+    <input type="hidden" name="imdbid">
+    <input type="submit">
+</form>
