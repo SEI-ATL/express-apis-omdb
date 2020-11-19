@@ -42,6 +42,7 @@ a {
     background-color: floralwhite;
     border-radius: 12px;
     border: 5px dotted rgb(236, 182, 44);
+    position: relative;
 }
 
 .movieDetail img {
@@ -54,6 +55,10 @@ a {
 }
 
 .movieDetail a.viewMore {
+    position: absolute;
+    bottom: -25px;
+    right: 50%;
+    transform: translate(55%, 0);
     border: 1px solid goldenrod;
 }
 
@@ -67,11 +72,12 @@ a {
     align-items: center;
     margin: 10px;
     background-color: floralwhite;
-    min-height: 12vh;
+    min-height: 150px;
     min-width: 25vw;
     max-width: 500px;
     border-radius: 6px;
     margin: 0 auto;
+    border: 5px dotted rgb(236, 182, 44);
 }
 
 input:focus {
