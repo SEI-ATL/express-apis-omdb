@@ -21,7 +21,6 @@ movieRouter.get('/movies/:movie_id', (req, res) => {
     axios.get(`http://www.omdbapi.com/?i=${searchId}&apikey=${process.env.API}`, (omdbRes) => {
         let movieData = omdbRes.json;
     }).then((movieData) => {
-        console.log(movieData.data);
         res.render('detail', { data: movieData.data });
     })
 });
@@ -36,11 +35,18 @@ movieRouter.post('/faves', (req, res) => {
     db.faves.create({
         title: req.body.title,
         imdbid: req.body.imdbid
-    }).then(dbRes => {
-        console.log(dbRes.get());
     }).then(() => {
         res.redirect('/faves');
     });
+})
+
+movieRouter.post('/delete', (req, res) => {
+    let movie = req.body.title;
+    db.faves.destroy({
+        where: { title: movie }
+    }).then(()=> {
+        res.redirect('faves');
+    })
 })
 
 module.exports = movieRouter;

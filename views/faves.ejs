@@ -1,6 +1,13 @@
 <h1>My Favorites</h1>
 <ul>
     <% favesArray.forEach((movie) => { %> 
-        <li><%= movie.dataValues.title %> </li>
+        <li>
+            <%= movie.dataValues.title %> 
+            <form method="post" action="/delete">
+            <input type="hidden" name="title" value="<%= movie.dataValues.title %>">
+            <button type="submit">delete</button>
+            </form>
+        </li>
     <% })%> 
 </ul> 
+
