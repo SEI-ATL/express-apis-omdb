@@ -29,12 +29,35 @@ movieRouter.get('/movies/:movie_id', async (req, res) => {
 });
 
 movieRouter.post('/faves', (req, res) => {
-  console.log(req.body.title);
-  db.fave.create({
-    title: req.body.title,
-    imdbid: req.body.imdbid
-  }).then(createdFave => {
-    console.log(createdFave);
+  db.fave.findOrCreate({
+    where: {
+      imdbid: req.body.imdbid
+    },
+    defaults: {
+      title: req.body.title,
+      poster: req.body.poster
+    }
+  }).then(([fave, created]) => {
+    res.redirect('/faves');
+  });
+});
+
+movieRouter.get('/faves', (req, res) => {
+  db.fave.findAll()
+    .then(faves => {
+      console.log(faves);
+      res.render('faves', { faves: faves });
+    });
+});
+
+movieRouter.delete('/faves/:imdbid', (req, res) => {
+  db.fave.destroy({
+    where: {
+      imdbid: req.params.imdbid
+    }
+  }).then(numRowsDeleted => {
+    console.log(numRowsDeleted);
+    res.redirect('/faves');
   });
 });
 

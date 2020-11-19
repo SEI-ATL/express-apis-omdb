@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   fave.init({
     title: DataTypes.STRING,
-    imdbid: DataTypes.STRING
+    imdbid: DataTypes.STRING,
+    poster: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'fave',

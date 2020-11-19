@@ -1,0 +1,15 @@
+<h2>My Faves</h2>
+
+<% faves.forEach(element => { %>
+<h3>
+  <a href="/movies/<%= element.dataValues.imdbid %>">
+    <%= element.dataValues.title %>
+  </a>
+</h3>
+<a href="/movies/<%= element.dataValues.imdbid %>">
+  <img src="<%= element.dataValues.poster %>" alt="<%= element.dataValues.poster %>">
+</a>
+<form action="/faves/<%= element.dataValues.imdbid %>/?_method=DELETE" method="POST">
+  <input type="submit" value="Remove">
+</form>
+<% }); %>

@@ -2,11 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
+let methodOverride = require('method-override');
 
 let movieController = require('./controllers/movieController');
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
+
+app.use(methodOverride('_method'));
+
 // Specifies the location of the static assets folder
 app.use(express.static('static'));
 // Sets up body-parser for parsing form data
