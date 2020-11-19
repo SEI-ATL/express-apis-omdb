@@ -4,6 +4,8 @@ const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 const movieRouter = require('./controller/movieController')
 const axios = require('axios');
+const db = require('./models');
+const fave = require('./models/fave')
 
 // Sets EJS as the view engine
 app.set('view engine', 'ejs');
