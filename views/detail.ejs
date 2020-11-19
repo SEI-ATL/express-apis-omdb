@@ -2,6 +2,7 @@
 <% // This is how to do comments in EJS, by the way... %>
 
 <h1><%= title %></h1>
+</div>
 <img src="<%= details.Poster %>"/>
 <p><%= rating %>/10</p>
 <div class="details">
@@ -9,9 +10,13 @@
     <% for (const [x, y] of Object.entries(details)){ %>
     <%}; %>
   </ul>
-<% </div>
-    <div class="faves">
-      <form action="/faves" method="POST">
-          <input type="submit" id='submit' placeholder="Favorite">
-      </form>
-    </div> %>
+<form action="/" method="POST">
+  <input type="submit" value='SAVE'>
+  <input type="hidden" name="title" value="<%=details.Title%>">
+  <input type="hidden" name="imdbid" value="<%=details.imdbID%>">
+</form>
+</div>
+
+
+
+ 

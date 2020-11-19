@@ -1,7 +1,7 @@
 <% // Render your search results here %>
 <% // This is how to do comments in EJS, by the way... %>
 
-<h1><%= title %></h1>
+ <h1><%= title %></h1>
 <ul>
   <% results.forEach (movie => {%>
   <li>
@@ -10,17 +10,17 @@
         <img src="<%= movie.Poster %>" />
       </div>
       <div class="text">
-        <span class="key">Title:</span>
-        <span class="value"><%= movie.Title %><br /> </span>
-        <span class="key">Year:</span>
-        <span class="value"><%= movie.Year %> </span><br />
-        <span class="key">imdbID:</span>
-        <span class="value"><%= movie.imdbID %> </span><br />
-        <span class="key">Type:</span>
-        <span class="value"><%= movie.Type %> </span><br />
+        <span>Title:</span>
+        <span><%= movie.Title %></span><br>
+        <span>Year:</span>
+        <span><%= movie.Year %></span><br>
+        <span>imdbID:</span>
+        <span><%= movie.imdbID %></span><br>
+        <span>Type:</span>
+        <span><%= movie.Type %></span><br>
         <a href="/movies/<%= movie.imdbID %>">LINK</a>
       </div>
     </div>
   </li>
   <% }); %>
-</ul>
+</ul> 
