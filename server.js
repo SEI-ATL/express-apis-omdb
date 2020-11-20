@@ -3,6 +3,7 @@ const express = require('express');
 //var request = require('request');
 const axios = require('axios').default;
 const ejsLayouts = require('express-ejs-layouts');
+const methodOverride = require('method-override');
 
 //my db
 const db = require('./models');
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 // Enables EJS Layouts middleware
 app.use(ejsLayouts);
 app.use('/', express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'))
 
 // Adds some logging to each request
 app.use(require('morgan')('dev')); ////???????????????? what is this
@@ -133,14 +135,15 @@ app.post('/', (req, res) => {
 app.delete('/', (req, res) => {
   console.log('im trying to delte');
 
-  db.fave.destroy({ truncate: true, cascade: false }).then(() => {
-    res.redirect('/faves');
-  }).catch((error) => {
-    res.redirect('/');
-    console.log(error);
-  });
-
-
+  db.fave
+    .truncate({ restartIdentity: true })
+    .then(() => {
+      res.redirect('/faves');
+    })
+    .catch((error) => {
+      res.redirect('/');
+      console.log(error);
+    });
 });
 
 // The app.listen function returns a server handle
@@ -162,4 +165,3 @@ module.exports = server;
 
 // creating a model
 // a model is a schema with a table we're creating w/ field names
-
